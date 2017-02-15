@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+   <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <f:metadata>  
+  <f:viewParam name="idEntreprise" value="#{entrepriseDetailsMBean.idEntreprise}"  
+               required="true"/>  
+  <f:viewAction action="#{entrepriseDetailsMBean.loadEntreprise}"/>  
+</f:metadata>  
+   </h:head>
+    <body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Nom:" for="nom" />
+                    <p:inputText id="nom" value="#{entrepriseDetailsMBean.nom}" title="Nom" />
+                    <p:outputLabel value="Adresse:" for="adresse" />
+                    <p:inputText id="adresse" value="#{entrepriseDetailsMBean.adresse}" title="Adresse" />
+                    <p:outputLabel value="CodePostal:" for="codePostal" />
+                    <p:inputText id="codePostal" value="#{entrepriseDetailsMBean.codePostal}" title="CodePostal" />
+                    <p:outputLabel value="Ville:" for="ville" />
+                    <p:inputText id="ville" value="#{entrepriseDetailsMBean.ville}" title="Ville" />
+                    <p:outputLabel value="Description:" for="description" />
+                    <p:inputText id="description" value="#{entrepriseDetailsMBean.description}" title="Description" />
+                   
+                   
+                    
+                </p:panelGrid>
+                <h:commandButton value="Créer" type="submit"
+                                 action="#{entrepriseDetailsMBean.creerEntreprise()}"/>
+            </h:form>
+        </f:view>
+
+    </body>
+</html>
