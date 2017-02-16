@@ -7,6 +7,7 @@ package jsf;
 
 import entities.Entreprise;
 import java.io.Serializable;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -21,6 +22,7 @@ import sessions.EntrepriseFacade;
 public class EntrepriseDetailsMBean implements Serializable {
 
      private int idEntreprise;
+     private Date date;
      private String nom;
      private String ville;
      private String adresse;
@@ -63,6 +65,15 @@ public class EntrepriseDetailsMBean implements Serializable {
         this.ville = ville;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    
     public String getAdresse() {
         return adresse;
     }

@@ -22,9 +22,15 @@ and open the template in the editor.
         <f:view>
 
 
+            
+            
             <h:form>
                 <h1><h:outputText value="Create/Edit"/></h1>
                 <p:panelGrid columns="2">
+                     <p:outputLabel value="Id:" for="id" />
+                    <p:inputText id="id" value="#{entrepriseDetailsMBean.idEntreprise}" title="Id" />
+                     <p:outputLabel value="Date:" for="date" />
+                    <p:inputText id="date" value="#{entrepriseDetailsMBean.date}" title="date" />
                     <p:outputLabel value="Nom:" for="nom" />
                     <p:inputText id="nom" value="#{entrepriseDetailsMBean.nom}" title="Nom" />
                     <p:outputLabel value="Adresse:" for="adresse" />

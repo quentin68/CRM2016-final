@@ -72,6 +72,10 @@ public class EntrepriseMBean implements Serializable {
     public String showCreate() {  
         return "EntrepriseDetails";  
     }  
+    
+     public String gologin() {  
+        return "login";  
+    }  
 
     public int getId() {
         return id;

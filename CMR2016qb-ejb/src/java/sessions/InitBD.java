@@ -21,6 +21,8 @@ import javax.ejb.Startup;
 public class InitBD {
     @EJB
     private EntrepriseFacade entrepriseFacade;
+     @EJB
+        private GestionnaireUtilisateur gestionutilisateur;
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
@@ -29,5 +31,6 @@ public class InitBD {
     public void initBDAvecDonneesTest() {
         System.out.println("### INIT BD ###");
         entrepriseFacade.creerEntreprisesDeTest();
+        gestionutilisateur.creerAdmin();
     }
 }

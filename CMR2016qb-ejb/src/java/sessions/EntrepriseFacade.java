@@ -86,7 +86,7 @@ public class EntrepriseFacade extends AbstractFacade<Entreprise> {
 
     
      public void create(Entreprise e) {
-         System.out.println(e.getId()+"loooooooooooooooooooooo");
+        
         getEntityManager().persist(e);
        
     }

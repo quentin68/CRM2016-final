@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>sjcsj</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+           <f:metadata>  
+  <f:viewParam name="idUser" value="#{utilisateurMBean.idUser}"  
+               required="true"/>  
+  <f:viewAction action="#{utilisateurMBean.loadUser}"/>  
+</f:metadata>  
+    </head>
+    <body>
+        
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable value="#{utilisateurMBean.utilisateur}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nom"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nom}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Prenom"/>
+                        </f:facet>
+                        <h:outputText value="#{item.prenom}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Pseudo"/>
+                        </f:facet>
+                        <h:outputText value="#{item.pseudo}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Password"/>
+                        </f:facet>
+                        <h:outputText value="#{item.password}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Mail"/>
+                        </f:facet>
+                        <h:outputText value="#{item.mail}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Telephone"/>
+                        </f:facet>
+                        <h:outputText value="#{item.telephone}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="EstAdmin"/>
+                        </f:facet>
+                        <h:outputText value="#{item.estAdmin}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Connexion"/></h1>
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="Pseudo:" for="pseudo" />
+                    <h:inputText id="pseudo" value="#{utilisateurMBean.pseudo}" title="Pseudo" />
+                    <h:outputLabel value="Password:" for="password" />
+                    <h:inputText id="password" value="#{utilisateurMBean.password}" title="Password" />
+                    <h:commandButton value="Se connecter" type="submit"
+                                 action="#{utilisateurMBean.connect()}"/>
+                </h:panelGrid>
+                
+            </h:form>
+       
+
+    </body>
+</html>
