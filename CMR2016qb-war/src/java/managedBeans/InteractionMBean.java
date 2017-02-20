@@ -5,33 +5,32 @@
  */
 package managedBeans;
 
-import entitie.Entreprise;
-import java.io.Serializable;
+import entitie.Interaction;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
-import session.EntrepriseFacade;
+import session.InteractionFacade;
 
 /**
  *
  * @author B4RL1V3
  */
-@Named(value = "entrepriseMBean")
+@Named(value = "interactionMBean")
 @ViewScoped
-public class EntrepriseMBean implements Serializable {
+public class InteractionMBean {
     @EJB
-    private EntrepriseFacade entrepriseFacade;
+    private InteractionFacade interactionFacade;
 
     private int id;
-    private Entreprise entreprise;
-    private List<Entreprise> liste = new ArrayList();
+    private Interaction interaction;
+    private List<Interaction> liste = new ArrayList();
 
-    public EntrepriseMBean() {
+    public InteractionMBean() {
     }
 
-    public List<Entreprise> getEntreprises() {
+    public List<Interaction> getEtudiants() {
         if(liste.isEmpty()) {
             refreshListeFromDatabase();
         } else {
@@ -42,26 +41,17 @@ public class EntrepriseMBean implements Serializable {
 
     public void refreshListeFromDatabase() {
         System.out.println("JE REMPLIS LA LISTE");
-        liste = entrepriseFacade.findAll();
-    }
-    
-    public String voirInteractions(Entreprise e) {
-        System.out.println("DANS voirInteractions id=" + e.getId());
-        return "interactions?faces-redirect=true";
+        liste = interactionFacade.findAll();
     }
 
     public String showDetails(int id) {  
-        return "forms/entreprise?idEntreprise=" + id;  
+        return "forms/interaction?id=" + id;  
     }  
     
     public String showCreate() {  
-        return "forms/entreprise";
-    }  
+        return "forms/interaction";
+    }
     
-     public String gologin() {  
-        return "login";  
-    }  
-
     public int getId() {
         return id;
     }
@@ -70,15 +60,15 @@ public class EntrepriseMBean implements Serializable {
         this.id = id;
     }
 
-    public Entreprise getDetails() {  
-        if(entreprise == null){
-            entreprise = new Entreprise();
+    public Interaction getDetails() {  
+        if(interaction == null){
+            interaction = new Interaction();
         }
-        return entreprise;  
+        return interaction;  
     }  
 
     public String update() {  
-        entrepriseFacade.edit(entreprise);
+        interactionFacade.edit(interaction);
         return "index";  
     }  
 
@@ -86,7 +76,7 @@ public class EntrepriseMBean implements Serializable {
         return "index";  
     }  
 
-    public void loadEntreprise() {  
-        this.entreprise = entrepriseFacade.find(id);  
+    public void loadInteraction() {  
+        this.interaction = interactionFacade.find(id);  
     } 
 }

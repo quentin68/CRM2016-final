@@ -13,8 +13,8 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <f:metadata>  
-            <f:viewParam name="idEntreprise" value="#{entrepriseDetailsMBean.idEntreprise}"/>  
-            <f:viewAction action="#{entrepriseDetailsMBean.loadEntreprise}"/>  
+            <f:viewParam name="idEntreprise" value="#{entrepriseMBean.id}"/>  
+            <f:viewAction action="#{entrepriseMBean.loadEntreprise}"/>  
         </f:metadata>  
    </h:head>
     <body>
@@ -23,18 +23,18 @@ and open the template in the editor.
                 <h1><h:outputText value="Create/Edit"/></h1>
                 <p:panelGrid columns="2">
                     <p:outputLabel value="Nom:" for="nom" />
-                    <p:inputText id="nom" value="#{entrepriseDetailsMBean.details.nom}" title="Nom" />
+                    <p:inputText id="nom" value="#{entrepriseMBean.details.nom}" title="Nom" />
                     <p:outputLabel value="Adresse:" for="adresse" />
-                    <p:inputText id="adresse" value="#{entrepriseDetailsMBean.details.adresse}" title="Adresse" />
+                    <p:inputText id="adresse" value="#{entrepriseMBean.details.adresse}" title="Adresse" />
                     <p:outputLabel value="CodePostal:" for="codePostal" />
-                    <p:inputText id="codePostal" value="#{entrepriseDetailsMBean.details.codePostal}" title="CodePostal" />
+                    <p:inputText id="codePostal" value="#{entrepriseMBean.details.codePostal}" title="CodePostal" />
                     <p:outputLabel value="Ville:" for="ville" />
-                    <p:inputText id="ville" value="#{entrepriseDetailsMBean.details.ville}" title="Ville" />
+                    <p:inputText id="ville" value="#{entrepriseMBean.details.ville}" title="Ville" />
                     <p:outputLabel value="Description:" for="description" />
-                    <p:inputText id="description" value="#{entrepriseDetailsMBean.details.description}" title="Description" />
+                    <p:inputText id="description" value="#{entrepriseMBean.details.description}" title="Description" />
                 </p:panelGrid>
                 <h:commandButton value="Créer" type="submit"
-                                 action="#{entrepriseDetailsMBean.update()}"/>
+                                 action="#{entrepriseMBean.update()}"/>
             </h:form>
         </f:view>
     </body>

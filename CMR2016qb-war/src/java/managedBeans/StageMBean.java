@@ -5,33 +5,32 @@
  */
 package managedBeans;
 
-import entitie.Entreprise;
-import java.io.Serializable;
+import entitie.Stage;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
-import session.EntrepriseFacade;
+import session.StageFacade;
 
 /**
  *
  * @author B4RL1V3
  */
-@Named(value = "entrepriseMBean")
+@Named(value = "stageMBean")
 @ViewScoped
-public class EntrepriseMBean implements Serializable {
+public class StageMBean {
     @EJB
-    private EntrepriseFacade entrepriseFacade;
+    private StageFacade stageFacade;
 
     private int id;
-    private Entreprise entreprise;
-    private List<Entreprise> liste = new ArrayList();
+    private Stage stage;
+    private List<Stage> liste = new ArrayList();
 
-    public EntrepriseMBean() {
+    public StageMBean() {
     }
 
-    public List<Entreprise> getEntreprises() {
+    public List<Stage> getEtudiants() {
         if(liste.isEmpty()) {
             refreshListeFromDatabase();
         } else {
@@ -42,26 +41,17 @@ public class EntrepriseMBean implements Serializable {
 
     public void refreshListeFromDatabase() {
         System.out.println("JE REMPLIS LA LISTE");
-        liste = entrepriseFacade.findAll();
-    }
-    
-    public String voirInteractions(Entreprise e) {
-        System.out.println("DANS voirInteractions id=" + e.getId());
-        return "interactions?faces-redirect=true";
+        liste = stageFacade.findAll();
     }
 
     public String showDetails(int id) {  
-        return "forms/entreprise?idEntreprise=" + id;  
+        return "forms/stage?id=" + id;  
     }  
     
     public String showCreate() {  
-        return "forms/entreprise";
-    }  
+        return "forms/stage";
+    }
     
-     public String gologin() {  
-        return "login";  
-    }  
-
     public int getId() {
         return id;
     }
@@ -70,15 +60,15 @@ public class EntrepriseMBean implements Serializable {
         this.id = id;
     }
 
-    public Entreprise getDetails() {  
-        if(entreprise == null){
-            entreprise = new Entreprise();
+    public Stage getDetails() {  
+        if(stage == null){
+            stage = new Stage();
         }
-        return entreprise;  
+        return stage;  
     }  
 
     public String update() {  
-        entrepriseFacade.edit(entreprise);
+        stageFacade.edit(stage);
         return "index";  
     }  
 
@@ -86,7 +76,7 @@ public class EntrepriseMBean implements Serializable {
         return "index";  
     }  
 
-    public void loadEntreprise() {  
-        this.entreprise = entrepriseFacade.find(id);  
+    public void loadStage() {  
+        this.stage = stageFacade.find(id);  
     } 
 }
