@@ -7,10 +7,14 @@
 
     <f:event type="javax.faces.event.PreRenderViewEvent" 
              listener="#{entrepriseMBean.refreshListeFromDatabase()}"/>
+      <f:event listener="#{authenticationMBean.checkErrors}" type="preRenderView"/>
     <h:head>
         <title>CRM 2016</title>
     </h:head>
     <h:body>
+        <h:form>
+                <h:commandLink action="#{authenticationMBean.logout}">logout</h:commandLink>
+        </h:form>
         <f:view>
             <h:form>
                 <h1><h:outputText value="Liste des entreprises"/></h1>

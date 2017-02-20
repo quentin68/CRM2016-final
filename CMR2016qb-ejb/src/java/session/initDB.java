@@ -21,9 +21,12 @@ import javax.ejb.Startup;
 public class initDB {
     @EJB
     private EntrepriseFacade ef;
+    @EJB
+    private UtilisateurFacade uf;
     
     @PostConstruct
     public void remplirDB() {
         ef.creerEntreprisesDeTest();
+        uf.creerAdmin();
     }
 }
