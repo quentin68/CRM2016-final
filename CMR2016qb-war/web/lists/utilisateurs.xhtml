@@ -57,6 +57,12 @@
                         </f:facet>
                         <h:outputText value="#{item.telephone}"/>
                     </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Supprimer"/>
+                        </f:facet>
+                        <h:commandButton value="Supprimer" action="#{utilisateurMBean.delete(item)}"/>
+                    </p:column>
                 </p:dataTable>
                 <h:commandButton value="Créer un utilisateur" action="#{utilisateurMBean.showCreate}"/>
             </h:form>

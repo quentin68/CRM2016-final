@@ -38,16 +38,28 @@ public class AuthenticationMBean implements Serializable {
     private String password;
     private List<Utilisateur> liste = new ArrayList();
 
+    /**
+     *
+     */
     public AuthenticationMBean() {
     }
  
+    /**
+     *
+     * @return
+     */
     public List<Utilisateur> getUtilisateur() {
          liste.clear();
         Utilisateur u= uf.get(5);
         liste.add(u);
         return liste; 
     }
-       public String connect() {  
+  
+    /**
+     *
+     * @return
+     */
+    public String connect() {  
             Utilisateur u = uf.getByLogin(pseudo, password);
             if (u != null) {
                 HttpSession session = SessionUtils.getSession();
@@ -58,36 +70,68 @@ public class AuthenticationMBean implements Serializable {
              }
     }  
 
+    /**
+     *
+     * @return
+     */
     public int getIdUser() {
         return idUser;
     }
 
+    /**
+     *
+     * @param idUser
+     */
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPseudo() {
         return pseudo;
     }
 
+    /**
+     *
+     * @param pseudo
+     */
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
        
-    
-     public void loadUser() {  
+    /**
+     *
+     */
+    public void loadUser() {  
     this.utilisateur = uf.get(idUser);  
   }  
 
-     public void checkErrors(ComponentSystemEvent event) throws ServletException, IOException {
+    /**
+     *
+     * @param event
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void checkErrors(ComponentSystemEvent event) throws ServletException, IOException {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         if ("true".equals((String)request.getParameter("failed"))) {
@@ -106,6 +150,10 @@ public class AuthenticationMBean implements Serializable {
         }
     }
  
+    /**
+     *
+     * @return
+     */
     public String logout() {
         String page="/login?logout=true&faces-redirect=true";
         FacesContext context = FacesContext.getCurrentInstance();

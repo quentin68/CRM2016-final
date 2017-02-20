@@ -31,9 +31,16 @@ public class EtudiantMBean implements Serializable {
     private Etudiant etudiant;
     private List<Etudiant> liste = new ArrayList();
 
+    /**
+     *
+     */
     public EtudiantMBean() {
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Etudiant> getEtudiants() {
         if(liste.isEmpty()) {
             refreshListeFromDatabase();
@@ -43,27 +50,51 @@ public class EtudiantMBean implements Serializable {
         return liste; 
     }
 
+    /**
+     *
+     */
     public void refreshListeFromDatabase() {
         System.out.println("JE REMPLIS LA LISTE");
         liste = etudiantFacade.findAll();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public String showDetails(int id) {  
         return "/forms/etudiant?faces-redirect=true&id=" + id;  
     }  
     
+    /**
+     *
+     * @return
+     */
     public String showCreate() {  
         return "/forms/etudiant?faces-redirect=true";
     }
     
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Etudiant getDetails() {  
         if(etudiant == null){
             etudiant = new Etudiant();
@@ -71,23 +102,52 @@ public class EtudiantMBean implements Serializable {
         return etudiant;  
     }  
 
+    /**
+     *
+     * @return
+     */
     public String update() {  
         etudiantFacade.edit(etudiant);
         return "/lists/etudiants?faces-redirect=true";  
     }  
 
+    /**
+     *
+     * @param e
+     * @return
+     */
+    public String delete(Etudiant e) {  
+        etudiantFacade.remove(e);
+        return "/lists/etudiants?faces-redirect=true";  
+    } 
+    
+    /**
+     *
+     * @return
+     */
     public String list() {
         return "/lists/etudiants?faces-redirect=true";  
     }  
 
+    /**
+     *
+     */
     public void loadEtudiant() {  
         this.etudiant = etudiantFacade.find(id);  
     } 
     
+    /**
+     *
+     * @return
+     */
     public List<Etudiant> getAllEtudiants() {
         return etudiantFacade.findAll();
     }
     
+    /**
+     *
+     * @return
+     */
     public Converter getEtudiantsConverter() {
         return etudiantsConverter;
     }

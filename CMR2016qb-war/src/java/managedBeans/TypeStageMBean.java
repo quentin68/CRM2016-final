@@ -23,6 +23,10 @@ public class TypeStageMBean {
     public TypeStageMBean() {
     }
     
+    /**
+     *
+     * @return
+     */
     public TypeStageEnum[] getTypesStage() {
         return TypeStageEnum.values();
     }

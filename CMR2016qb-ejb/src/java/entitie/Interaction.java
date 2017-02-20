@@ -7,6 +7,7 @@ package entitie;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,19 +28,32 @@ public class Interaction implements Serializable {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateInteraction;
     private InteractionEnum type;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Entreprise entreprise;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Utilisateur utilisateur;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private ContactEntreprise contactEntreprise;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Stage stage;
     private String contenu;
 
+    /**
+     *
+     */
     public Interaction() {
     }
 
+    /**
+     *
+     * @param dateInteraction
+     * @param type
+     * @param entreprise
+     * @param utilisateur
+     * @param contactEntreprise
+     * @param stage
+     * @param contenu
+     */
     public Interaction(Date dateInteraction, InteractionEnum type, Entreprise entreprise, Utilisateur utilisateur, ContactEntreprise contactEntreprise, Stage stage, String contenu) {
         this.dateInteraction = dateInteraction;
         this.type = type;
@@ -50,66 +64,130 @@ public class Interaction implements Serializable {
         this.contenu = contenu;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDateInteraction() {
         return dateInteraction;
     }
 
+    /**
+     *
+     * @param dateInteraction
+     */
     public void setDateInteraction(Date dateInteraction) {
         this.dateInteraction = dateInteraction;
     }
 
+    /**
+     *
+     * @return
+     */
     public InteractionEnum getType() {
         return type;
     }
 
+    /**
+     *
+     * @param type
+     */
     public void setType(InteractionEnum type) {
         this.type = type;
     }
 
+    /**
+     *
+     * @return
+     */
     public Entreprise getEntreprise() {
         return entreprise;
     }
 
+    /**
+     *
+     * @param entreprise
+     */
     public void setEntreprise(Entreprise entreprise) {
         this.entreprise = entreprise;
     }
 
+    /**
+     *
+     * @return
+     */
     public Utilisateur getUtilisateur() {
         return utilisateur;
     }
 
+    /**
+     *
+     * @param utilisateur
+     */
     public void setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
     }
 
+    /**
+     *
+     * @return
+     */
     public ContactEntreprise getContactEntreprise() {
         return contactEntreprise;
     }
 
+    /**
+     *
+     * @param contactEntreprise
+     */
     public void setContactEntreprise(ContactEntreprise contactEntreprise) {
         this.contactEntreprise = contactEntreprise;
     }
 
+    /**
+     *
+     * @return
+     */
     public Stage getStage() {
         return stage;
     }
 
+    /**
+     *
+     * @param stage
+     */
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getContenu() {
         return contenu;
     }
 
+    /**
+     *
+     * @param contenu
+     */
     public void setContenu(String contenu) {
         this.contenu = contenu;
     }

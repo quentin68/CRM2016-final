@@ -67,8 +67,8 @@
                             <h:outputText value="Stage"/>
                         </f:facet>
                         <h:commandButton value="Voir stage"
-                                             action="#{interactionMBean.voirStage(item.stage)}"/>
-                        <p:dataTable value="#{item.stage}" var="item2">
+                                             action="#{interactionMBean.voirStage(item.stage)}"  rendered="#{not empty item.stage}"/>
+                        <p:dataTable value="#{item.stage}" var="item2" rendered="#{not empty item.stage}">
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Etudiant"/>
@@ -90,6 +90,12 @@
                                 <h:outputText value="#{item2.intitule}"/>
                             </p:column>
                         </p:dataTable>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Supprimer"/>
+                        </f:facet>
+                        <h:commandButton value="Supprimer" action="#{interactionMBean.delete(item)}"/>
                     </p:column>
                 </p:dataTable>
                 <h:commandButton value="Créer une intéraction" action="#{interactionMBean.showCreate()}"/>

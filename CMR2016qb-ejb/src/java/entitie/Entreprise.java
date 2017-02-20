@@ -40,10 +40,22 @@ public class Entreprise implements Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Interaction> interactions = new ArrayList();
 
+    /**
+     *
+     */
     public Entreprise() {
         this.dateCreation = new Date();
     }
 
+    /**
+     *
+     * @param nom
+     * @param adresse
+     * @param codePostal
+     * @param ville
+     * @param description
+     * @param contacts
+     */
     public Entreprise(String nom, String adresse, String codePostal, String ville, String description, List<ContactEntreprise> contacts) {
         this.nom = nom;
         this.adresse = adresse;
@@ -55,74 +67,147 @@ public class Entreprise implements Serializable {
     }
 
     // Bonne pratique quand on a des relations 1-N ou N-N
-    public List<Interaction> getInteractions() {
+
+    /**
+     *
+     * @return
+     */
+        public List<Interaction> getInteractions() {
         return interactions;
     }
 
+    /**
+     *
+     * @param i
+     */
     public void addInteraction(Interaction i) {
         interactions.add(i);
     }   
 
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAdresse() {
         return adresse;
     }
 
+    /**
+     *
+     * @param adresse
+     */
     public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCodePostal() {
         return codePostal;
     }
 
+    /**
+     *
+     * @param codePostal
+     */
     public void setCodePostal(String codePostal) {
         this.codePostal = codePostal;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getVille() {
         return ville;
     }
 
+    /**
+     *
+     * @param ville
+     */
     public void setVille(String ville) {
         this.ville = ville;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDateCreation() {
         return dateCreation;
     }
 
+    /**
+     *
+     * @param dateCreation
+     */
     public void setDateCreation(Date dateCreation) {
         this.dateCreation = dateCreation;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<ContactEntreprise> getContacts() {
         return contacts;
     }
 
+    /**
+     *
+     * @param contacts
+     */
     public void setContacts(List<ContactEntreprise> contacts) {
         this.contacts = contacts;
     }

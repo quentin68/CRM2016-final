@@ -69,7 +69,13 @@
                         </f:facet>
                         <h:commandButton value="Voir interactions"
                                          action="#{entrepriseMBean.voirInteractions(item)}"/>
-                    </p:column>    
+                    </p:column>  
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Supprimer"/>
+                        </f:facet>
+                        <h:commandButton value="Supprimer" action="#{entrepriseMBean.delete(item)}"/>
+                    </p:column>
                 </p:dataTable>
                 <h:commandButton value="Créer une entreprise" action="#{entrepriseMBean.showCreate}"/>
             </h:form>

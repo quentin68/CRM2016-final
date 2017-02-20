@@ -19,11 +19,18 @@ public class StageFacade extends AbstractFacade<Stage> {
     @PersistenceContext(unitName = "CMR2016qb-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public StageFacade() {
         super(Stage.class);
     }

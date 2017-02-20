@@ -30,14 +30,24 @@ public class InteractionMBean implements Serializable {
     private List<Interaction> liste = new ArrayList();
     private int idEntreprise;
 
+    /**
+     *
+     */
     public InteractionMBean() {
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Interaction> getInteractions() {
         refreshListeFromDatabase();
         return liste; 
     }
 
+    /**
+     *
+     */
     public void refreshListeFromDatabase() {
         if(idEntreprise != 0) {
             liste = interactionFacade.findByEntreprise(idEntreprise);
@@ -47,34 +57,68 @@ public class InteractionMBean implements Serializable {
         }
     }
     
+    /**
+     *
+     * @param s
+     * @return
+     */
     public String voirStage(Stage s) {
         return "/forms/stage?faces-redirect=true&id=" + s.getId();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public String showDetails(int id) {  
         return "/forms/interaction?faces-redirect=true&id=" + id;  
     }  
     
+    /**
+     *
+     * @return
+     */
     public String showCreate() {  
         return "/forms/interaction?faces-redirect=true";
     }
     
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdEntreprise() {
         return idEntreprise;
     }
 
+    /**
+     *
+     * @param idEntreprise
+     */
     public void setIdEntreprise(int idEntreprise) {
         this.idEntreprise = idEntreprise;
     }
 
+    /**
+     *
+     * @return
+     */
     public Interaction getDetails() {  
         if(interaction == null){
             interaction = new Interaction();
@@ -82,15 +126,36 @@ public class InteractionMBean implements Serializable {
         return interaction;  
     }  
 
+    /**
+     *
+     * @return
+     */
     public String update() {  
         interactionFacade.edit(interaction);
         return "/lists/interactions?faces-redirect=true";  
     }  
 
+    /**
+     *
+     * @param i
+     * @return
+     */
+    public String delete(Interaction i) {  
+        interactionFacade.remove(i);
+        return "/lists/interactions?faces-redirect=true";  
+    }      
+    
+    /**
+     *
+     * @return
+     */
     public String list() {
         return "/lists/interactions?faces-redirect=true";  
     }  
 
+    /**
+     *
+     */
     public void loadInteraction() {  
         this.interaction = interactionFacade.find(id);  
     } 

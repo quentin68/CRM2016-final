@@ -28,9 +28,21 @@ public class Utilisateur implements Serializable {
     private String mail;
     private String telephone;
 
+    /**
+     *
+     */
     public Utilisateur() {
     }
 
+    /**
+     *
+     * @param nom
+     * @param prenom
+     * @param pseudo
+     * @param password
+     * @param mail
+     * @param telephone
+     */
     public Utilisateur(String nom, String prenom, String pseudo, String password, String mail, String telephone) {
         this.nom = nom;
         this.prenom = prenom;
@@ -40,58 +52,114 @@ public class Utilisateur implements Serializable {
         this.telephone = telephone;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPrenom() {
         return prenom;
     }
 
+    /**
+     *
+     * @param prenom
+     */
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPseudo() {
         return pseudo;
     }
 
+    /**
+     *
+     * @param pseudo
+     */
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMail() {
         return mail;
     }
 
+    /**
+     *
+     * @param mail
+     */
     public void setMail(String mail) {
         this.mail = mail;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTelephone() {
         return telephone;
     }
 
+    /**
+     *
+     * @param telephone
+     */
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }

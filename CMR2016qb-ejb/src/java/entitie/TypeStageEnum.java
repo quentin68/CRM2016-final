@@ -10,8 +10,24 @@ package entitie;
  * @author B4RL1V3
  */
 public enum TypeStageEnum {
+
+    /**
+     *
+     */
     L3,
+
+    /**
+     *
+     */
     M2,
+
+    /**
+     *
+     */
     ALTERNANCEM2,
+
+    /**
+     *
+     */
     AUTRE
 }

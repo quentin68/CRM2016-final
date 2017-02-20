@@ -25,15 +25,26 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> {
     @PersistenceContext(unitName = "CMR2016qb-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public UtilisateurFacade() {
         super(Utilisateur.class);
     }
 
+    /**
+     *
+     * @param u
+     */
     @Override
     public void create(Utilisateur u) {
 
@@ -183,7 +194,10 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> {
 
     }
     
-     public void creerAdmin() {
+    /**
+     *
+     */
+    public void creerAdmin() {
           
         Utilisateur u = new Utilisateur("Bauer", "Quentin", "quentin68", "123456","qbauer68@gmail.com", "0610936472");
         create(u);

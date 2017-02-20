@@ -7,6 +7,7 @@ package entitie;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,9 +26,9 @@ public class Stage implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private TypeStageEnum type;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Entreprise entreprise;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Etudiant etudiant;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateDebut;
@@ -36,9 +37,22 @@ public class Stage implements Serializable {
     private String intitule;
     private String contenu;
 
+    /**
+     *
+     */
     public Stage() {
     }
 
+    /**
+     *
+     * @param type
+     * @param entreprise
+     * @param etudiant
+     * @param dateDebut
+     * @param dateFin
+     * @param intitule
+     * @param contenu
+     */
     public Stage(TypeStageEnum type, Entreprise entreprise, Etudiant etudiant, Date dateDebut, Date dateFin, String intitule, String contenu) {
         this.type = type;
         this.entreprise = entreprise;
@@ -49,66 +63,130 @@ public class Stage implements Serializable {
         this.contenu = contenu;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public TypeStageEnum getType() {
         return type;
     }
 
+    /**
+     *
+     * @param type
+     */
     public void setType(TypeStageEnum type) {
         this.type = type;
     }
 
+    /**
+     *
+     * @return
+     */
     public Entreprise getEntreprise() {
         return entreprise;
     }
 
+    /**
+     *
+     * @param entreprise
+     */
     public void setEntreprise(Entreprise entreprise) {
         this.entreprise = entreprise;
     }
 
+    /**
+     *
+     * @return
+     */
     public Etudiant getEtudiant() {
         return etudiant;
     }
 
+    /**
+     *
+     * @param etudiant
+     */
     public void setEtudiant(Etudiant etudiant) {
         this.etudiant = etudiant;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDateDebut() {
         return dateDebut;
     }
 
+    /**
+     *
+     * @param dateDebut
+     */
     public void setDateDebut(Date dateDebut) {
         this.dateDebut = dateDebut;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDateFin() {
         return dateFin;
     }
 
+    /**
+     *
+     * @param dateFin
+     */
     public void setDateFin(Date dateFin) {
         this.dateFin = dateFin;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getIntitule() {
         return intitule;
     }
 
+    /**
+     *
+     * @param intitule
+     */
     public void setIntitule(String intitule) {
         this.intitule = intitule;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getContenu() {
         return contenu;
     }
 
+    /**
+     *
+     * @param contenu
+     */
     public void setContenu(String contenu) {
         this.contenu = contenu;
     }

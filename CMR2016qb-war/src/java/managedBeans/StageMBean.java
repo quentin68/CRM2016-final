@@ -31,9 +31,16 @@ public class StageMBean implements Serializable {
     private Stage stage;
     private List<Stage> liste = new ArrayList();
 
+    /**
+     *
+     */
     public StageMBean() {
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Stage> getStages() {
         if(liste.isEmpty()) {
             refreshListeFromDatabase();
@@ -43,27 +50,51 @@ public class StageMBean implements Serializable {
         return liste; 
     }
 
+    /**
+     *
+     */
     public void refreshListeFromDatabase() {
         System.out.println("JE REMPLIS LA LISTE");
         liste = stageFacade.findAll();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public String showDetails(int id) {  
         return "/forms/stage?faces-redirect=true&id=" + id;  
     }  
     
+    /**
+     *
+     * @return
+     */
     public String showCreate() {  
         return "/forms/stage?faces-redirect=true";
     }
     
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Stage getDetails() {  
         if(stage == null){
             stage = new Stage();
@@ -71,23 +102,52 @@ public class StageMBean implements Serializable {
         return stage;  
     }  
 
+    /**
+     *
+     * @return
+     */
     public String update() {  
         stageFacade.edit(stage);
         return "/lists/stages?faces-redirect=true";  
     }  
+    
+    /**
+     *
+     * @param s
+     * @return
+     */
+    public String delete(Stage s) {  
+        stageFacade.remove(s);
+        return "/lists/stages?faces-redirect=true";  
+    }  
 
+    /**
+     *
+     * @return
+     */
     public String list() {
         return "/lists/stages?faces-redirect=true";  
     }  
 
+    /**
+     *
+     */
     public void loadStage() {  
         this.stage = stageFacade.find(id);  
     } 
     
+    /**
+     *
+     * @return
+     */
     public List<Stage> getAllStages() {
         return stageFacade.findAll();
     }
     
+    /**
+     *
+     * @return
+     */
     public Converter getStagesConverter() {
         return stagesConverter;
     }

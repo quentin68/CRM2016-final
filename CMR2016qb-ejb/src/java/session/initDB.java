@@ -24,6 +24,9 @@ public class initDB {
     @EJB
     private UtilisateurFacade uf;
     
+    /**
+     *
+     */
     @PostConstruct
     public void remplirDB() {
         ef.creerEntreprisesDeTest();

@@ -19,11 +19,18 @@ public class EtudiantFacade extends AbstractFacade<Etudiant> {
     @PersistenceContext(unitName = "CMR2016qb-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public EtudiantFacade() {
         super(Etudiant.class);
     }

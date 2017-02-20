@@ -22,15 +22,27 @@ public class InteractionFacade extends AbstractFacade<Interaction> {
     @PersistenceContext(unitName = "CMR2016qb-ejbPU")
     private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public InteractionFacade() {
         super(Interaction.class);
     }
 
+    /**
+     *
+     * @param idEntreprise
+     * @return
+     */
     public List<Interaction> findByEntreprise(int idEntreprise) {
         try {
             Entreprise e = em.find(Entreprise.class, idEntreprise);

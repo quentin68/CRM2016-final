@@ -31,9 +31,16 @@ public class ContactEntrepriseMBean implements Serializable {
     private ContactEntreprise contactEntreprise;
     private List<ContactEntreprise> liste = new ArrayList();
 
+    /**
+     *
+     */
     public ContactEntrepriseMBean() {
     }
 
+    /**
+     *
+     * @return
+     */
     public List<ContactEntreprise> getContactEntreprises() {
         if(liste.isEmpty()) {
             refreshListeFromDatabase();
@@ -43,27 +50,51 @@ public class ContactEntrepriseMBean implements Serializable {
         return liste; 
     }
 
+    /**
+     *
+     */
     public void refreshListeFromDatabase() {
         System.out.println("JE REMPLIS LA LISTE");
         liste = contactEntrepriseFacade.findAll();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public String showDetails(int id) {  
         return "/forms/contactEntreprise?faces-redirect=true&id=" + id;  
     }  
     
+    /**
+     *
+     * @return
+     */
     public String showCreate() {  
         return "/forms/contactEntreprise?faces-redirect=true";
     }
 
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public ContactEntreprise getDetails() {  
         if(contactEntreprise == null){
             contactEntreprise = new ContactEntreprise();
@@ -71,23 +102,52 @@ public class ContactEntrepriseMBean implements Serializable {
         return contactEntreprise;  
     }  
 
+    /**
+     *
+     * @return
+     */
     public String update() {  
         contactEntrepriseFacade.edit(contactEntreprise);
         return "/lists/contactsEntreprise?faces-redirect=true";  
     }  
+    
+    /**
+     *
+     * @param c
+     * @return
+     */
+    public String delete(ContactEntreprise c) {  
+        contactEntrepriseFacade.remove(c);
+        return "/lists/contactsEntreprise?faces-redirect=true";  
+    }  
 
+    /**
+     *
+     * @return
+     */
     public String list() {
         return "/lists/contactsEntreprise?faces-redirect=true";  
     }  
 
+    /**
+     *
+     */
     public void loadContactEntreprise() {  
         this.contactEntreprise = contactEntrepriseFacade.find(id);  
     }
     
+    /**
+     *
+     * @return
+     */
     public List<ContactEntreprise> getAllContactsEntreprise() {
         return contactEntrepriseFacade.findAll();
     }
     
+    /**
+     *
+     * @return
+     */
     public Converter getContactsEntrepriseConverter() {
         return contactsEntrepriseConverter;
     }

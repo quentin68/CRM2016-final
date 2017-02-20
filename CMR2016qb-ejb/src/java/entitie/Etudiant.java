@@ -26,9 +26,19 @@ public class Etudiant implements Serializable {
     private int numeroEtudiant;
     private String mail;
 
+    /**
+     *
+     */
     public Etudiant() {
     }
 
+    /**
+     *
+     * @param nom
+     * @param prenom
+     * @param numeroEtudiant
+     * @param mail
+     */
     public Etudiant(String nom, String prenom, int numeroEtudiant, String mail) {
         this.nom = nom;
         this.prenom = prenom;
@@ -36,42 +46,82 @@ public class Etudiant implements Serializable {
         this.mail = mail;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPrenom() {
         return prenom;
     }
 
+    /**
+     *
+     * @param prenom
+     */
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNumeroEtudiant() {
         return numeroEtudiant;
     }
 
+    /**
+     *
+     * @param numeroEtudiant
+     */
     public void setNumeroEtudiant(int numeroEtudiant) {
         this.numeroEtudiant = numeroEtudiant;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMail() {
         return mail;
     }
 
+    /**
+     *
+     * @param mail
+     */
     public void setMail(String mail) {
         this.mail = mail;
     }

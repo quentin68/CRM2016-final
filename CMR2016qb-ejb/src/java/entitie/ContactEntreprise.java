@@ -6,6 +6,7 @@
 package entitie;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,13 +26,24 @@ public class ContactEntreprise implements Serializable {
     private String nom;
     private String prenom;
     private String mail;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Entreprise entreprise;
     private String poste;
 
+    /**
+     *
+     */
     public ContactEntreprise() {
     }
     
+    /**
+     *
+     * @param nom
+     * @param prenom
+     * @param mail
+     * @param entreprise
+     * @param poste
+     */
     public ContactEntreprise(String nom, String prenom, String mail, Entreprise entreprise, String poste) {
         this.nom = nom;
         this.prenom = prenom;
@@ -40,50 +52,98 @@ public class ContactEntreprise implements Serializable {
         this.poste = poste;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPrenom() {
         return prenom;
     }
 
+    /**
+     *
+     * @param prenom
+     */
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMail() {
         return mail;
     }
 
+    /**
+     *
+     * @param mail
+     */
     public void setMail(String mail) {
         this.mail = mail;
     }
 
+    /**
+     *
+     * @return
+     */
     public Entreprise getEntreprise() {
         return entreprise;
     }
 
+    /**
+     *
+     * @param entreprise
+     */
     public void setEntreprise(Entreprise entreprise) {
         this.entreprise = entreprise;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPoste() {
         return poste;
     }
 
+    /**
+     *
+     * @param poste
+     */
     public void setPoste(String poste) {
         this.poste = poste;
     }

@@ -23,6 +23,10 @@ public class TypesInteractionMBean {
     public TypesInteractionMBean() {
     }
     
+    /**
+     *
+     * @return
+     */
     public InteractionEnum[] getTypesInteraction() {
         return InteractionEnum.values();
     }

@@ -23,15 +23,25 @@ public class EntrepriseFacade extends AbstractFacade<Entreprise> {
     private EntityManager em;
     private InteractionFacade interactionFacade;
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
+    /**
+     *
+     */
     public EntrepriseFacade() {
         super(Entreprise.class);
     }
     
+    /**
+     *
+     */
     public void creerEntreprisesDeTest() {
         System.out.println("CREATION DE DONNEES DE TEST");
 

@@ -39,7 +39,12 @@ public class EntrepriseMBean implements Serializable {
     // 1 - DES MODELES = définis par des getters et des setters
     
     // Modèles correspondant à la liste des entreprises
-    public List<Entreprise> getEntreprises() {
+
+    /**
+     *
+     * @return
+     */
+        public List<Entreprise> getEntreprises() {
         if(liste.isEmpty()) {
             refreshListeFromDatabase();
         } else {
@@ -50,12 +55,21 @@ public class EntrepriseMBean implements Serializable {
 
     // ACTION METHOD (méthodes appelées par click sur 
     // bouton/lien ou event
-    public void refreshListeFromDatabase() {
+
+    /**
+     *
+     */
+        public void refreshListeFromDatabase() {
         // on remplit la liste
         System.out.println("JE REMPLIS LA LISTE");
         liste = entrepriseFacade.findAll();
     }
     
+    /**
+     *
+     * @param e
+     * @return
+     */
     public String voirInteractions(Entreprise e) {
         return "/lists/interactions?faces-redirect=true&idEntreprise=" + e.getId();
     }
@@ -70,18 +84,34 @@ public class EntrepriseMBean implements Serializable {
         return "/forms/entreprise?faces-redirect=true&id=" + id;  
     }  
     
+    /**
+     *
+     * @return
+     */
     public String showCreate() {  
         return "/forms/entreprise?faces-redirect";
     }  
 
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Entreprise getDetails() {  
         if(entreprise == null){
             entreprise = new Entreprise();
@@ -89,23 +119,52 @@ public class EntrepriseMBean implements Serializable {
         return entreprise;  
     }  
 
+    /**
+     *
+     * @return
+     */
     public String update() {  
         entrepriseFacade.edit(entreprise);
         return "/lists/entreprises?faces-redirect=true";  
     }  
 
+    /**
+     *
+     * @param e
+     * @return
+     */
+    public String delete(Entreprise e) {  
+        entrepriseFacade.remove(e);
+        return "/lists/entreprises?faces-redirect=true";  
+    } 
+    
+    /**
+     *
+     * @return
+     */
     public String list() {
         return "/lists/entreprises?faces-redirect=true";  
     }  
 
+    /**
+     *
+     */
     public void loadEntreprise() {  
         this.entreprise = entrepriseFacade.find(id);  
     }
     
+    /**
+     *
+     * @return
+     */
     public List<Entreprise> getAllEntreprises() {
         return entrepriseFacade.findAll();
     }
     
+    /**
+     *
+     * @return
+     */
     public Converter getEntreprisesConverter() {
         return entreprisesConverter;
     }

@@ -10,11 +10,39 @@ package entitie;
  * @author B4RL1V3
  */
 public enum InteractionEnum {
+
+    /**
+     *
+     */
     TELEPHONE,
+
+    /**
+     *
+     */
     VISITE,
+
+    /**
+     *
+     */
     FORUM,
+
+    /**
+     *
+     */
     MAIL,
+
+    /**
+     *
+     */
     SEMINAIRE,
+
+    /**
+     *
+     */
     TAXE,
+
+    /**
+     *
+     */
     AUTRE
 }
