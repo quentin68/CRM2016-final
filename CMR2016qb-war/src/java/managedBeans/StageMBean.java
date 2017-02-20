@@ -6,6 +6,7 @@
 package managedBeans;
 
 import entitie.Stage;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -19,7 +20,7 @@ import session.StageFacade;
  */
 @Named(value = "stageMBean")
 @ViewScoped
-public class StageMBean {
+public class StageMBean implements Serializable {
     @EJB
     private StageFacade stageFacade;
 
@@ -45,11 +46,11 @@ public class StageMBean {
     }
 
     public String showDetails(int id) {  
-        return "forms/stage?id=" + id;  
+        return "/forms/stage?id=" + id;  
     }  
     
     public String showCreate() {  
-        return "forms/stage";
+        return "/forms/stage";
     }
     
     public int getId() {
@@ -69,11 +70,11 @@ public class StageMBean {
 
     public String update() {  
         stageFacade.edit(stage);
-        return "index";  
+        return "/index";  
     }  
 
     public String list() {
-        return "index";  
+        return "/index";  
     }  
 
     public void loadStage() {  

@@ -6,6 +6,7 @@
 package managedBeans;
 
 import entitie.Interaction;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -19,7 +20,7 @@ import session.InteractionFacade;
  */
 @Named(value = "interactionMBean")
 @ViewScoped
-public class InteractionMBean {
+public class InteractionMBean implements Serializable {
     @EJB
     private InteractionFacade interactionFacade;
 
@@ -45,11 +46,11 @@ public class InteractionMBean {
     }
 
     public String showDetails(int id) {  
-        return "forms/interaction?id=" + id;  
+        return "/forms/interaction?id=" + id;  
     }  
     
     public String showCreate() {  
-        return "forms/interaction";
+        return "/forms/interaction";
     }
     
     public int getId() {
@@ -69,11 +70,11 @@ public class InteractionMBean {
 
     public String update() {  
         interactionFacade.edit(interaction);
-        return "index";  
+        return "/index";  
     }  
 
     public String list() {
-        return "index";  
+        return "/index";  
     }  
 
     public void loadInteraction() {  

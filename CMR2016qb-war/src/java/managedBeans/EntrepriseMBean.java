@@ -51,15 +51,15 @@ public class EntrepriseMBean implements Serializable {
     }
 
     public String showDetails(int id) {  
-        return "forms/entreprise?idEntreprise=" + id;  
+        return "/forms/entreprise?idEntreprise=" + id;  
     }  
     
     public String showCreate() {  
-        return "forms/entreprise";
+        return "/forms/entreprise";
     }  
     
      public String gologin() {  
-        return "login";  
+        return "/login";  
     }  
 
     public int getId() {
@@ -79,11 +79,11 @@ public class EntrepriseMBean implements Serializable {
 
     public String update() {  
         entrepriseFacade.edit(entreprise);
-        return "index";  
+        return "/index";  
     }  
 
     public String list() {
-        return "index";  
+        return "/index";  
     }  
 
     public void loadEntreprise() {  

@@ -10,7 +10,7 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
    <h:head>
-        <title>TODO supply a title</title>
+        <title>Entreprise</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <f:metadata>  
             <f:viewParam name="idEntreprise" value="#{entrepriseMBean.id}"/>  
@@ -33,8 +33,7 @@ and open the template in the editor.
                     <p:outputLabel value="Description:" for="description" />
                     <p:inputText id="description" value="#{entrepriseMBean.details.description}" title="Description" />
                 </p:panelGrid>
-                <h:commandButton value="Créer" type="submit"
-                                 action="#{entrepriseMBean.update()}"/>
+                <h:commandButton value="Créer" type="submit" action="#{entrepriseMBean.update()}"/>
             </h:form>
         </f:view>
     </body>

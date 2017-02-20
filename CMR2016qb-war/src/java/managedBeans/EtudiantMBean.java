@@ -6,6 +6,7 @@
 package managedBeans;
 
 import entitie.Etudiant;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -19,7 +20,7 @@ import session.EtudiantFacade;
  */
 @Named(value = "etudiantMBean")
 @ViewScoped
-public class EtudiantMBean {
+public class EtudiantMBean implements Serializable {
     @EJB
     private EtudiantFacade etudiantFacade;
 
@@ -69,11 +70,11 @@ public class EtudiantMBean {
 
     public String update() {  
         etudiantFacade.edit(etudiant);
-        return "index";  
+        return "/index";  
     }  
 
     public String list() {
-        return "index";  
+        return "/index";  
     }  
 
     public void loadEtudiant() {  

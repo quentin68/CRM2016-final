@@ -6,6 +6,7 @@
 package managedBeans;
 
 import entitie.Utilisateur;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -19,7 +20,7 @@ import session.UtilisateurFacade;
  */
 @Named(value = "utilisateurMBean")
 @ViewScoped
-public class UtilisateurMBean {
+public class UtilisateurMBean implements Serializable {
     @EJB
     private UtilisateurFacade utilisateurFacade;
 
@@ -45,11 +46,11 @@ public class UtilisateurMBean {
     }
 
     public String showDetails(int id) {  
-        return "forms/utilisateur?id=" + id;  
+        return "/forms/utilisateur?id=" + id;  
     }  
     
     public String showCreate() {  
-        return "forms/utilisateur";
+        return "/forms/utilisateur";
     }
     
     public int getId() {
@@ -69,11 +70,11 @@ public class UtilisateurMBean {
 
     public String update() {  
         utilisateurFacade.edit(utilisateur);
-        return "index";  
+        return "/index";  
     }  
 
     public String list() {
-        return "index";  
+        return "/index";  
     }  
 
     public void loadUtilisateur() {  
