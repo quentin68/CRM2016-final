@@ -1,90 +1,24 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-
-    <f:event type="javax.faces.event.PreRenderViewEvent" 
-             listener="#{entrepriseMBean.refreshListeFromDatabase()}"/>
-      <f:event listener="#{authenticationMBean.checkErrors}" type="preRenderView"/>
-    <h:head>
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <head>
         <title>CRM 2016</title>
-    </h:head>
-    <h:body>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
         <h:form>
-                <h:commandLink action="#{authenticationMBean.logout}">logout</h:commandLink>
+            <h:commandButton value="Voir les entreprises" action="/lists/entreprises?faces-redirect=true"/>
+            <h:commandButton value="Voir les utilisateurs" action="/lists/utilisateurs?faces-redirect=true"/>
+            <h:commandButton value="Voir les étudiants" action="/lists/etudiants?faces-redirect=true"/>
+            <h:commandButton value="Voir les stages" action="/lists/stages?faces-redirect=true"/>
+            <h:commandButton value="Voir les interactions" action="/lists/interactions?faces-redirect=true"/>
+            <h:commandButton value="Voir les contacts" action="/lists/contactsEntreprise?faces-redirect=true"/>
         </h:form>
-        <f:view>
-            <h:form>
-                <h1><h:outputText value="Liste des entreprises"/></h1>
-                <p:dataTable value="#{entrepriseMBean.entreprises}" var="item">
-                    <p:column sortBy="#{item.id}">
-                        <f:facet name="header">
-                            <h:outputText value="Id"/>
-                        </f:facet>
-                        <h:outputText value="#{item.id}"/>
-                    </p:column>
-                    <p:column sortBy="#{item.nom}">
-                        <f:facet name="header">
-                            <h:outputText value="Nom"/>
-                        </f:facet>
-                        <h:outputText value="#{item.nom}"/>
-                    </p:column>
-                    <p:column sortBy="#{item.adresse}">
-                        <f:facet name="header">
-                            <h:outputText value="Adresse"/>
-                        </f:facet>
-                        <h:outputText value="#{item.adresse}"/>
-                    </p:column>
-                    <p:column sortBy="#{item.codePostal}">
-                        <f:facet name="header">
-                            <h:outputText value="Code Postal"/>
-                        </f:facet>
-                        <h:outputText value="#{item.codePostal}"/>
-                    </p:column>
-                    <p:column sortBy="#{item.ville}">
-                        <f:facet name="header">
-                            <h:outputText value="Ville"/>
-                        </f:facet>
-                        <h:outputText value="#{item.ville}"/>
-                    </p:column>
-                    <p:column sortBy="#{item.description}">
-                        <f:facet name="header">
-                            <h:outputText value="Description"/>
-                        </f:facet>
-                        <h:outputText value="#{item.description}"/>
-                    </p:column>
-                    <p:column sortBy="#{item.dateCreation}">
-                        <f:facet name="header">
-                            <h:outputText value="Date"/>
-                        </f:facet>
-                        <h:outputText value="#{item.dateCreation}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                        </h:outputText>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Interactions"/>
-                        </f:facet>
-
-                        <h:commandButton value="Voir interactions"
-                                         action="#{entrepriseMBean.voirInteractions(item)}"/>
-                        <p:dataTable id="table" value="#{item.interactions}" var="item2">
-                            <p:column sortBy="#{item2.contenu}">
-                                <f:facet name="header">
-                                    <h:outputText value="description"/>
-                                </f:facet>
-                                <h:outputText value="#{item2.contenu}"/>
-
-                            </p:column>
-                        </p:dataTable>
-                    </p:column>    
-                </p:dataTable>
-                <h:commandButton value="Créer une entreprise" action="#{entrepriseMBean.showCreate}"/>
-                <h:commandButton value="login" action="#{entrepriseMBean.gologin}"/>
-            </h:form>
-        </f:view>
-    </h:body>
+    </body>
 </html>
-

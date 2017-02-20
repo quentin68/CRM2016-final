@@ -24,7 +24,8 @@ public class EntrepriseMBean implements Serializable {
     @EJB
     private EntrepriseFacade entrepriseFacade;
 
-  private int id;
+    private int id;
+    private Entreprise entreprise;
     private List<Entreprise> liste = new ArrayList();
     /**
      * Creates a new instance of EntrepriseMBean
@@ -55,7 +56,7 @@ public class EntrepriseMBean implements Serializable {
     public String voirInteractions(Entreprise e) {
         // ici on va voir...
         System.out.println("DANS voirInteractions id=" + e.getId());
-        return "interactions?faces-redirect=true";
+        return "/lists/interactions?faces-redirect=true";
     }
     
     /** 
@@ -64,16 +65,12 @@ public class EntrepriseMBean implements Serializable {
      * @param id 
      * @return 
      */  
-    public String showDetails(int id) {  
-        return "EntrepriseDetails?idEntreprise=" + id;  
+    public String showDetails(int id) {
+        return "/forms/entreprise?faces-redirect=true&id=" + id;  
     }  
     
     public String showCreate() {  
         return "EntrepriseDetails";
-    }  
-    
-     public String gologin() {  
-        return "login";  
     }  
 
     public int getId() {
@@ -82,5 +79,25 @@ public class EntrepriseMBean implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Entreprise getDetails() {  
+        if(entreprise == null){
+            entreprise = new Entreprise();
+        }
+        return entreprise;  
+    }  
+
+    public String update() {  
+        entrepriseFacade.edit(entreprise);
+        return "/lists/entreprises?faces-redirect=true";  
+    }  
+
+    public String list() {
+        return "/lists/entreprises?faces-redirect=true";  
+    }  
+
+    public void loadEntreprise() {  
+        this.entreprise = entrepriseFacade.find(id);  
     }
 }

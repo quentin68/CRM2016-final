@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Stage</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <f:metadata>  
+            <f:viewParam name="id" value="#{stageMBean.id}"/>  
+            <f:viewAction action="#{stageMBean.loadStage()}"/>  
+        </f:metadata>  
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Type:" for="type" />
+                    <p:inputText id="type" value="#{stageMBean.details.type}" title="Type" />
+                    <p:outputLabel value="Entreprise:" for="entreprise" />
+                    <p:selectOneMenu id="entreprise" value="#{stageMBean.details.entreprise}" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="Etudiant:" for="etudiant" />
+                    <p:selectOneMenu id="etudiant" value="#{stageMBean.details.etudiant}" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="DateDebut:" for="dateDebut" />
+                    <p:inputText id="dateDebut" value="#{stageMBean.details.dateDebut}" title="DateDebut" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:inputText>
+                    <p:outputLabel value="DateFin:" for="dateFin" />
+                    <p:inputText id="dateFin" value="#{stageMBean.details.dateFin}" title="DateFin" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:inputText>
+                    <p:outputLabel value="Intitule:" for="intitule" />
+                    <p:inputText id="intitule" value="#{stageMBean.details.intitule}" title="Intitule" />
+                    <p:outputLabel value="Contenu:" for="contenu" />
+                    <p:inputText id="contenu" value="#{stageMBean.details.contenu}" title="Contenu" />
+                </p:panelGrid>
+                <h:commandButton value="Créer" type="submit" action="#{stageMBean.update()}"/>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>

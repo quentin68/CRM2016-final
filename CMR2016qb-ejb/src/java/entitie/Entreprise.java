@@ -41,6 +41,7 @@ public class Entreprise implements Serializable {
     private List<Interaction> interactions = new ArrayList();
 
     public Entreprise() {
+        this.dateCreation = new Date();
     }
 
     public Entreprise(String nom, String adresse, String codePostal, String ville, String description, List<ContactEntreprise> contacts) {
