@@ -6,6 +6,7 @@
 package managedBeans;
 
 import entitie.Interaction;
+import entitie.Stage;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,17 +34,21 @@ public class InteractionMBean implements Serializable {
     }
 
     public List<Interaction> getInteractions() {
-        if(liste.isEmpty()) {
-            refreshListeFromDatabase();
-        } else {
-            System.out.println("J'UTILISE LA LISTE CACHEE");
-        }
+        refreshListeFromDatabase();
         return liste; 
     }
 
     public void refreshListeFromDatabase() {
-        System.out.println("JE REMPLIS LA LISTE");
-        liste = interactionFacade.findAll();
+        if(idEntreprise != 0) {
+            liste = interactionFacade.findByEntreprise(idEntreprise);
+        }
+        else {
+            liste = interactionFacade.findAll();
+        }
+    }
+    
+    public String voirStage(Stage s) {
+        return "/forms/stage?faces-redirect=true&id=" + s.getId();
     }
 
     public String showDetails(int id) {  
@@ -60,6 +65,14 @@ public class InteractionMBean implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getIdEntreprise() {
+        return idEntreprise;
+    }
+
+    public void setIdEntreprise(int idEntreprise) {
+        this.idEntreprise = idEntreprise;
     }
 
     public Interaction getDetails() {  

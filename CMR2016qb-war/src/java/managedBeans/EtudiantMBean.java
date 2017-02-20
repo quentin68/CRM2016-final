@@ -10,6 +10,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import session.EtudiantFacade;
@@ -80,4 +83,26 @@ public class EtudiantMBean implements Serializable {
     public void loadEtudiant() {  
         this.etudiant = etudiantFacade.find(id);  
     } 
+    
+    public List<Etudiant> getAllEtudiants() {
+        return etudiantFacade.findAll();
+    }
+    
+    public Converter getEtudiantsConverter() {
+        return etudiantsConverter;
+    }
+
+    private final Converter etudiantsConverter = new Converter() {
+        @Override
+        public Object getAsObject(FacesContext context, UIComponent component, String value) {
+            System.out.println(value);
+            Etudiant e = etudiantFacade.find(Integer.parseInt(value));
+            return e;
+       }
+        @Override
+        public String getAsString(FacesContext context, UIComponent component, Object value) {
+            Etudiant e = (Etudiant) value;
+            return String.valueOf(e.getId()); 
+        }
+    };
 }

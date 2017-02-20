@@ -31,13 +31,13 @@
                         <f:facet name="header">
                             <h:outputText value="Entreprise"/>
                         </f:facet>
-                        <h:outputText value="#{item.entreprise}"/>
+                        <h:outputText value="#{item.entreprise.nom}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Etudiant"/>
                         </f:facet>
-                        <h:outputText value="#{item.etudiant}"/>
+                        <h:outputText value="#{item.etudiant.nom} #{item.etudiant.prenom}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">

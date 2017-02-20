@@ -23,16 +23,21 @@ and open the template in the editor.
                 <h1><h:outputText value="Create/Edit"/></h1>
                 <p:panelGrid columns="2">
                     <p:outputLabel value="Type:" for="type" />
-                    <p:inputText id="type" value="#{stageMBean.details.type}" title="Type" />
+                    <p:selectOneMenu id="type" value="#{stageMBean.details.type}"> 
+                        <f:selectItems value="#{typeStageMBean.typesStage}" var="type"
+                                       itemValue="#{type}" itemLabel="#{type}" />
+                    </p:selectOneMenu>
                     <p:outputLabel value="Entreprise:" for="entreprise" />
-                    <p:selectOneMenu id="entreprise" value="#{stageMBean.details.entreprise}" >
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{fixme}"/>
+                    <p:selectOneMenu id="entreprise" value="#{stageMBean.details.entreprise}" 
+                                     converter="#{entrepriseMBean.entreprisesConverter}"> 
+                        <f:selectItems value="#{entrepriseMBean.allEntreprises}"
+                            var="item" itemLabel="#{item.nom}" itemValue="#{item}" />
                     </p:selectOneMenu>
                     <p:outputLabel value="Etudiant:" for="etudiant" />
-                    <p:selectOneMenu id="etudiant" value="#{stageMBean.details.etudiant}" >
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{fixme}"/>
+                    <p:selectOneMenu id="etudiant" value="#{stageMBean.details.etudiant}" 
+                                     converter="#{etudiantMBean.etudiantsConverter}"> 
+                        <f:selectItems value="#{etudiantMBean.allEtudiants}"
+                                       var="item" itemLabel="#{item.nom} #{item.prenom}" itemValue="#{item}" />
                     </p:selectOneMenu>
                     <p:outputLabel value="DateDebut:" for="dateDebut" />
                     <p:inputText id="dateDebut" value="#{stageMBean.details.dateDebut}" title="DateDebut" >

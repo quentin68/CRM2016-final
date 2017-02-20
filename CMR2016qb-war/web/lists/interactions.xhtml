@@ -9,6 +9,9 @@
              listener="#{interactionMBean.refreshListeFromDatabase()}"/>
     <h:head>
         <title>CRM 2016</title>
+        <f:metadata>  
+            <f:viewParam name="idEntreprise" value="#{interactionMBean.idEntreprise}"/>   
+        </f:metadata>  
     </h:head>
     <h:body>
         <f:view>
@@ -39,19 +42,19 @@
                         <f:facet name="header">
                             <h:outputText value="Entreprise"/>
                         </f:facet>
-                        <h:outputText value="#{item.entreprise}"/>
+                        <h:outputText value="#{item.entreprise.nom}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Utilisateur"/>
                         </f:facet>
-                        <h:outputText value="#{item.utilisateur}"/>
+                        <h:outputText value="#{item.utilisateur.nom} #{item.utilisateur.prenom}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="ContactEntreprise"/>
                         </f:facet>
-                        <h:outputText value="#{item.contactEntreprise}"/>
+                        <h:outputText value="#{item.contactEntreprise.nom} #{item.contactEntreprise.prenom}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
@@ -63,20 +66,20 @@
                         <f:facet name="header">
                             <h:outputText value="Stage"/>
                         </f:facet>
-                        <p:dataTable value="#{item.stage}" var="item2">
-                            <h:commandButton value="Voir stage"
+                        <h:commandButton value="Voir stage"
                                              action="#{interactionMBean.voirStage(item.stage)}"/>
+                        <p:dataTable value="#{item.stage}" var="item2">
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Etudiant"/>
                                 </f:facet>
-                                <h:outputText value="#{item.etudiant.nom} #{item.etudiant.prenom}"/>
+                                <h:outputText value="#{item2.etudiant.nom} #{item2.etudiant.prenom}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="DateDebut"/>
                                 </f:facet>
-                                <h:outputText value="#{item.dateDebut}">
+                                <h:outputText value="#{item2.dateDebut}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                 </h:outputText>
                             </p:column>
@@ -84,7 +87,7 @@
                                 <f:facet name="header">
                                     <h:outputText value="Intitule"/>
                                 </f:facet>
-                                <h:outputText value="#{item.intitule}"/>
+                                <h:outputText value="#{item2.intitule}"/>
                             </p:column>
                         </p:dataTable>
                     </p:column>

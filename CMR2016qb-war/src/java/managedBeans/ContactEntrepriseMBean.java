@@ -6,7 +6,6 @@
 package managedBeans;
 
 import entitie.ContactEntreprise;
-import entitie.Entreprise;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,6 @@ import javax.faces.convert.Converter;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import session.ContactEntrepriseFacade;
-import session.EntrepriseFacade;
 
 /**
  *
@@ -28,8 +26,6 @@ import session.EntrepriseFacade;
 public class ContactEntrepriseMBean implements Serializable {
     @EJB
     private ContactEntrepriseFacade contactEntrepriseFacade;
-    @EJB
-    private EntrepriseFacade entrepriseFacade;
 
     private int id;
     private ContactEntreprise contactEntreprise;
@@ -88,24 +84,24 @@ public class ContactEntrepriseMBean implements Serializable {
         this.contactEntreprise = contactEntrepriseFacade.find(id);  
     }
     
-    public List<Entreprise> getAllEntreprises() {
-        return entrepriseFacade.findAll();
+    public List<ContactEntreprise> getAllContactsEntreprise() {
+        return contactEntrepriseFacade.findAll();
     }
     
-    public Converter getEntreprisesConverter() {
-        return entreprisesConverter;
+    public Converter getContactsEntrepriseConverter() {
+        return contactsEntrepriseConverter;
     }
 
-    private final Converter entreprisesConverter = new Converter() {
+    private final Converter contactsEntrepriseConverter = new Converter() {
         @Override
         public Object getAsObject(FacesContext context, UIComponent component, String value) {
             System.out.println(value);
-            Entreprise e = entrepriseFacade.find(Integer.parseInt(value));
+            ContactEntreprise e = contactEntrepriseFacade.find(Integer.parseInt(value));
             return e;
        }
         @Override
         public String getAsString(FacesContext context, UIComponent component, Object value) {
-            Entreprise e = (Entreprise) value;
+            ContactEntreprise e = (ContactEntreprise) value;
             return String.valueOf(e.getId()); 
         }
     };

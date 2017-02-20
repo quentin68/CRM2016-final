@@ -30,8 +30,8 @@ and open the template in the editor.
                     <p:inputText id="mail" value="#{contactEntrepriseMBean.details.mail}" title="Mail" />
                     <p:outputLabel value="Entreprise:" for="entreprise" />
                     <p:selectOneMenu id="entreprise" value="#{contactEntrepriseMBean.details.entreprise}"
-                        converter="#{contactEntrepriseMBean.entreprisesConverter}"> 
-                        <f:selectItems value="#{contactEntrepriseMBean.allEntreprises}"
+                                     converter="#{entrepriseMBean.entreprisesConverter}"> 
+                        <f:selectItems value="#{entrepriseMBean.allEntreprises}"
                             var="item" itemLabel="#{item.nom}" itemValue="#{item}" />
                     </p:selectOneMenu>
                     <p:outputLabel value="Poste:" for="poste" />

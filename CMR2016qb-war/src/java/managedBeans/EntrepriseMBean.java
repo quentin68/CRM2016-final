@@ -10,6 +10,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import session.EntrepriseFacade;
@@ -98,4 +101,26 @@ public class EntrepriseMBean implements Serializable {
     public void loadEntreprise() {  
         this.entreprise = entrepriseFacade.find(id);  
     }
+    
+    public List<Entreprise> getAllEntreprises() {
+        return entrepriseFacade.findAll();
+    }
+    
+    public Converter getEntreprisesConverter() {
+        return entreprisesConverter;
+    }
+
+    private final Converter entreprisesConverter = new Converter() {
+        @Override
+        public Object getAsObject(FacesContext context, UIComponent component, String value) {
+            System.out.println(value);
+            Entreprise e = entrepriseFacade.find(Integer.parseInt(value));
+            return e;
+       }
+        @Override
+        public String getAsString(FacesContext context, UIComponent component, Object value) {
+            Entreprise e = (Entreprise) value;
+            return String.valueOf(e.getId()); 
+        }
+    };
 }
