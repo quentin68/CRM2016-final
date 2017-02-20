@@ -54,9 +54,7 @@ public class EntrepriseMBean implements Serializable {
     }
     
     public String voirInteractions(Entreprise e) {
-        // ici on va voir...
-        System.out.println("DANS voirInteractions id=" + e.getId());
-        return "/lists/interactions?faces-redirect=true";
+        return "/lists/interactions?faces-redirect=true&idEntreprise=" + e.getId();
     }
     
     /** 

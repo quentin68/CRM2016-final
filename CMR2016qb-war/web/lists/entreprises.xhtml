@@ -70,15 +70,6 @@
 
                         <h:commandButton value="Voir interactions"
                                          action="#{entrepriseMBean.voirInteractions(item)}"/>
-                        <p:dataTable id="table" value="#{item.interactions}" var="item2">
-                            <p:column sortBy="#{item2.contenu}">
-                                <f:facet name="header">
-                                    <h:outputText value="description"/>
-                                </f:facet>
-                                <h:outputText value="#{item2.contenu}"/>
-
-                            </p:column>
-                        </p:dataTable>
                     </p:column>    
                 </p:dataTable>
                 <h:commandButton value="Créer une entreprise" action="#{entrepriseMBean.showCreate}"/>

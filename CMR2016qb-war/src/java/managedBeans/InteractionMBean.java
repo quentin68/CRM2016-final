@@ -27,6 +27,7 @@ public class InteractionMBean implements Serializable {
     private int id;
     private Interaction interaction;
     private List<Interaction> liste = new ArrayList();
+    private int idEntreprise;
 
     public InteractionMBean() {
     }

@@ -6,13 +6,18 @@
 package managedBeans;
 
 import entitie.ContactEntreprise;
+import entitie.Entreprise;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import session.ContactEntrepriseFacade;
+import session.EntrepriseFacade;
 
 /**
  *
@@ -23,6 +28,8 @@ import session.ContactEntrepriseFacade;
 public class ContactEntrepriseMBean implements Serializable {
     @EJB
     private ContactEntrepriseFacade contactEntrepriseFacade;
+    @EJB
+    private EntrepriseFacade entrepriseFacade;
 
     private int id;
     private ContactEntreprise contactEntreprise;
@@ -79,5 +86,27 @@ public class ContactEntrepriseMBean implements Serializable {
 
     public void loadContactEntreprise() {  
         this.contactEntreprise = contactEntrepriseFacade.find(id);  
-    }     
+    }
+    
+    public List<Entreprise> getAllEntreprises() {
+        return entrepriseFacade.findAll();
+    }
+    
+    public Converter getEntreprisesConverter() {
+        return entreprisesConverter;
+    }
+
+    private final Converter entreprisesConverter = new Converter() {
+        @Override
+        public Object getAsObject(FacesContext context, UIComponent component, String value) {
+            System.out.println(value);
+            Entreprise e = entrepriseFacade.find(Integer.parseInt(value));
+            return e;
+       }
+        @Override
+        public String getAsString(FacesContext context, UIComponent component, Object value) {
+            Entreprise e = (Entreprise) value;
+            return String.valueOf(e.getId()); 
+        }
+    };
 }

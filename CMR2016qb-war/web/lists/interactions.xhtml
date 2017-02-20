@@ -55,15 +55,38 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Stage"/>
-                        </f:facet>
-                        <h:outputText value="#{item.stage}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
                             <h:outputText value="Contenu"/>
                         </f:facet>
                         <h:outputText value="#{item.contenu}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Stage"/>
+                        </f:facet>
+                        <p:dataTable value="#{item.stage}" var="item2">
+                            <h:commandButton value="Voir stage"
+                                             action="#{interactionMBean.voirStage(item.stage)}"/>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Etudiant"/>
+                                </f:facet>
+                                <h:outputText value="#{item.etudiant.nom} #{item.etudiant.prenom}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DateDebut"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dateDebut}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Intitule"/>
+                                </f:facet>
+                                <h:outputText value="#{item.intitule}"/>
+                            </p:column>
+                        </p:dataTable>
                     </p:column>
                 </p:dataTable>
                 <h:commandButton value="Créer une intéraction" action="#{interactionMBean.showCreate()}"/>
