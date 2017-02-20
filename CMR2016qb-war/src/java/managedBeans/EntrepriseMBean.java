@@ -70,7 +70,7 @@ public class EntrepriseMBean implements Serializable {
     }  
     
     public String showCreate() {  
-        return "EntrepriseDetails";
+        return "/forms/entreprise?faces-redirect";
     }  
 
     public int getId() {
