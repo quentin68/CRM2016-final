@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <f:event type="javax.faces.event.PreRenderViewEvent" 
              listener="#{interactionMBean.refreshListeFromDatabase()}"/>
@@ -14,105 +15,112 @@
         </f:metadata>  
     </h:head>
     <h:body>
-        <f:view>
-            <h:form>
-                <h1><h:outputText value="Liste des intéractions"/></h1>
-                <p:dataTable value="#{interactionMBean.interactions}" var="item"   
-                    emptyMessage="Pas d'interaction pour ces critères"   
-                    widgetVar="interactionsTable"  
-                    paginator="true" 
-                    rows="10">
-               <p:column headerText="Id"  
-                        sortBy="#{item.id}"  
-                        filterBy="#{item.id}"  
-                        filterMatchMode="contains">  
-                        <h:link outcome="#{interactionMBean.showDetails(item.id)}" value="#{item.id}"/>    
-                    </p:column>
-                   
-                    <p:column headerText="DateInteraction"  
-                        sortBy="#{item.dateInteraction}"  
-                        filterBy="#{item.dateInteraction}"  
-                        filterMatchMode="contains">  
-                        <h:outputText value="#{item.dateInteraction}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                            </h:outputText>
-                    </p:column>
-                    
-                    <p:column headerText="Type"  
-                        sortBy="#{item.type}"  
-                        filterBy="#{item.type}"  
-                        filterMatchMode="contains">  
-                      <h:outputText value="#{item.type}"/>
-                          
-                    </p:column>
-                  
-                    <p:column headerText="Entreprise"  
-                        sortBy="#{item.entreprise.nom}"  
-                        filterBy="#{item.entreprise.nom}"  
-                        filterMatchMode="contains">  
-                        <h:outputText value="#{item.entreprise.nom}"/>
-                    </p:column>
-                   
-                    <p:column headerText="Utilisateur"  
-                        sortBy="#{item.utilisateur.nom}"  
-                        filterBy="#{item.utilisateur.nom}"  
-                        filterMatchMode="contains">  
-           <h:outputText value="#{item.utilisateur.nom}"/>
-                    </p:column>
-                    
-                    <p:column headerText="ContactEntreprise"  
-                        sortBy="#{item.contactEntreprise.nom}"  
-                        filterBy="#{item.contactEntreprise.nom}"  
-                        filterMatchMode="contains">  
-                        <h:outputText value="#{item.contactEntreprise.nom}"/>
-                    </p:column>
-                    
-                    <p:column headerText="Contenu"  
-                        sortBy="#{item.contenu}"  
-                        filterBy="#{item.contenu}"  
-                        filterMatchMode="contains">  
-                        <h:outputText value="#{item.contenu}"/>
-                    </p:column>
-                  
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Stage"/>
-                        </f:facet>
-                        <h:commandButton value="Voir stage"
-                                             action="#{interactionMBean.voirStage(item.stage)}"  rendered="#{not empty item.stage}"/>
-                        <p:dataTable value="#{item.stage}" var="item2" rendered="#{not empty item.stage}">
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Etudiant"/>
-                                </f:facet>
-                                <h:outputText value="#{item2.etudiant.nom} #{item2.etudiant.prenom}"/>
+        <ui:composition template="../template.xhtml">
+            <ui:define name="complementTitreEtH1">
+                Liste des intéractions
+            </ui:define>
+
+            <ui:define name="content">
+                <f:view>
+                    <h:form>
+                        <p:dataTable value="#{interactionMBean.interactions}" var="item"   
+                                     emptyMessage="Pas d'interaction pour ces critères"   
+                                     widgetVar="interactionsTable"  
+                                     paginator="true" 
+                                     rows="10">
+                            <p:column headerText="Id"  
+                                      sortBy="#{item.id}"  
+                                      filterBy="#{item.id}"  
+                                      filterMatchMode="contains">  
+                                <h:link outcome="#{interactionMBean.showDetails(item.id)}" value="#{item.id}"/>    
                             </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="DateDebut"/>
-                                </f:facet>
-                                <h:outputText value="#{item2.dateDebut}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+
+                            <p:column headerText="DateInteraction"  
+                                      sortBy="#{item.dateInteraction}"  
+                                      filterBy="#{item.dateInteraction}"  
+                                      filterMatchMode="contains">  
+                                <h:outputText value="#{item.dateInteraction}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                                 </h:outputText>
                             </p:column>
+
+                            <p:column headerText="Type"  
+                                      sortBy="#{item.type}"  
+                                      filterBy="#{item.type}"  
+                                      filterMatchMode="contains">  
+                                <h:outputText value="#{item.type}"/>
+
+                            </p:column>
+
+                            <p:column headerText="Entreprise"  
+                                      sortBy="#{item.entreprise.nom}"  
+                                      filterBy="#{item.entreprise.nom}"  
+                                      filterMatchMode="contains">  
+                                <h:outputText value="#{item.entreprise.nom}"/>
+                            </p:column>
+
+                            <p:column headerText="Utilisateur"  
+                                      sortBy="#{item.utilisateur.nom}"  
+                                      filterBy="#{item.utilisateur.nom}"  
+                                      filterMatchMode="contains">  
+                                <h:outputText value="#{item.utilisateur.nom}"/>
+                            </p:column>
+
+                            <p:column headerText="ContactEntreprise"  
+                                      sortBy="#{item.contactEntreprise.nom}"  
+                                      filterBy="#{item.contactEntreprise.nom}"  
+                                      filterMatchMode="contains">  
+                                <h:outputText value="#{item.contactEntreprise.nom}"/>
+                            </p:column>
+
+                            <p:column headerText="Contenu"  
+                                      sortBy="#{item.contenu}"  
+                                      filterBy="#{item.contenu}"  
+                                      filterMatchMode="contains">  
+                                <h:outputText value="#{item.contenu}"/>
+                            </p:column>
+
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Intitule"/>
+                                    <h:outputText value="Stage"/>
                                 </f:facet>
-                                <h:outputText value="#{item2.intitule}"/>
+                                <h:commandButton value="Voir stage"
+                                                 action="#{interactionMBean.voirStage(item.stage)}"  rendered="#{not empty item.stage}"/>
+                                <p:dataTable value="#{item.stage}" var="item2" rendered="#{not empty item.stage}">
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Etudiant"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item2.etudiant.nom} #{item2.etudiant.prenom}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="DateDebut"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item2.dateDebut}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Intitule"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item2.intitule}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Supprimer"/>
+                                </f:facet>
+                                <h:commandButton value="Supprimer" action="#{interactionMBean.delete(item)}"/>
                             </p:column>
                         </p:dataTable>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Supprimer"/>
-                        </f:facet>
-                        <h:commandButton value="Supprimer" action="#{interactionMBean.delete(item)}"/>
-                    </p:column>
-                </p:dataTable>
-                <h:commandButton value="Créer une intéraction" action="#{interactionMBean.showCreate()}"/>
-            </h:form>
-        </f:view>
+                        <h:commandButton value="Créer une intéraction" action="#{interactionMBean.showCreate()}"/>
+                    </h:form>
+                </f:view>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 

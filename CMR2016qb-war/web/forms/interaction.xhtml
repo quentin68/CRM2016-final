@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Stage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -18,42 +19,49 @@ and open the template in the editor.
         </f:metadata>  
     </h:head>
     <h:body>
-        <f:view>
-            <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="DateInteraction:" for="dateInteraction" />
-                    <p:inputText id="dateInteraction" value="#{interactionMBean.details.dateInteraction}" title="DateInteraction" >
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                    </p:inputText>
-                    <p:outputLabel value="Type:" for="type" />
-                    <p:selectOneMenu id="type" value="#{interactionMBean.details.type}"> 
-                        <f:selectItems value="#{typesInteractionMBean.typesInteraction}" var="type"
-                                       itemValue="#{type}" itemLabel="#{type}" />
-                    </p:selectOneMenu>
-                    <p:outputLabel value="Entreprise:" for="entreprise" />
-                    <p:selectOneMenu id="entreprise" value="#{interactionMBean.details.entreprise}" 
-                                     converter="#{entrepriseMBean.entreprisesConverter}"> 
-                        <f:selectItems value="#{entrepriseMBean.allEntreprises}"
-                                       var="item" itemLabel="#{item.nom}" itemValue="#{item}" />
-                    </p:selectOneMenu>
-                    <p:outputLabel value="ContactEntreprise:" for="contactEntreprise" />
-                    <p:selectOneMenu id="contactEntreprise" value="#{interactionMBean.details.contactEntreprise}"  
-                                     converter="#{contactEntrepriseMBean.contactsEntrepriseConverter}"> 
-                        <f:selectItems value="#{contactEntrepriseMBean.allContactsEntreprise}"
-                                       var="item" itemLabel="#{item.nom} #{item.prenom}" itemValue="#{item}" />
-                    </p:selectOneMenu>
-                    <p:outputLabel value="Stage:" for="stage" />
-                    <p:selectOneMenu id="stage" value="#{interactionMBean.details.stage}"  
-                                     converter="#{stageMBean.stagesConverter}"> 
-                        <f:selectItems value="#{stageMBean.allStages}"
-                                       var="item" itemLabel="#{item.intitule}" itemValue="#{item}" />
-                    </p:selectOneMenu>
-                    <p:outputLabel value="Contenu:" for="contenu" />
-                    <p:inputText id="contenu" value="#{interactionMBean.details.contenu}" title="Contenu" />
-                </p:panelGrid>
-                <h:commandButton value="Créer" type="submit" action="#{interactionMBean.update()}"/>
-            </h:form>
-        </f:view>
+        <ui:composition template="../template.xhtml">
+            <ui:define name="complementTitreEtH1">
+                Créer ou éditer une intéraction
+            </ui:define>
+
+            <ui:define name="content">
+                <f:view>
+                    <h:form>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="DateInteraction:" for="dateInteraction" />
+                            <p:inputText id="dateInteraction" value="#{interactionMBean.details.dateInteraction}" title="DateInteraction" >
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </p:inputText>
+                            <p:outputLabel value="Type:" for="type" />
+                            <p:selectOneMenu id="type" value="#{interactionMBean.details.type}"> 
+                                <f:selectItems value="#{typesInteractionMBean.typesInteraction}" var="type"
+                                               itemValue="#{type}" itemLabel="#{type}" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Entreprise:" for="entreprise" />
+                            <p:selectOneMenu id="entreprise" value="#{interactionMBean.details.entreprise}" 
+                                             converter="#{entrepriseMBean.entreprisesConverter}"> 
+                                <f:selectItems value="#{entrepriseMBean.allEntreprises}"
+                                               var="item" itemLabel="#{item.nom}" itemValue="#{item}" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="ContactEntreprise:" for="contactEntreprise" />
+                            <p:selectOneMenu id="contactEntreprise" value="#{interactionMBean.details.contactEntreprise}"  
+                                             converter="#{contactEntrepriseMBean.contactsEntrepriseConverter}"> 
+                                <f:selectItems value="#{contactEntrepriseMBean.allContactsEntreprise}"
+                                               var="item" itemLabel="#{item.nom} #{item.prenom}" itemValue="#{item}" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Stage:" for="stage" />
+                            <p:selectOneMenu id="stage" value="#{interactionMBean.details.stage}"  
+                                             converter="#{stageMBean.stagesConverter}"> 
+                                <f:selectItems value="#{stageMBean.allStages}"
+                                               var="item" itemLabel="#{item.intitule}" itemValue="#{item}" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Contenu:" for="contenu" />
+                            <p:inputText id="contenu" value="#{interactionMBean.details.contenu}" title="Contenu" />
+                        </p:panelGrid>
+                        <h:commandButton value="Créer" type="submit" action="#{interactionMBean.update()}"/>
+                    </h:form>
+                </f:view>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>

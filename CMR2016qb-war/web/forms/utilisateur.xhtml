@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Utilisateur</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -18,25 +19,32 @@ and open the template in the editor.
         </f:metadata>  
     </h:head>
     <h:body>
-        <f:view>
-            <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="Nom:" for="nom" />
-                    <p:inputText id="nom" value="#{utilisateurMBean.details.nom}" title="Nom" />
-                    <p:outputLabel value="Prenom:" for="prenom" />
-                    <p:inputText id="prenom" value="#{utilisateurMBean.details.prenom}" title="Prenom" />
-                    <p:outputLabel value="Pseudo:" for="pseudo" />
-                    <p:inputText id="pseudo" value="#{utilisateurMBean.details.pseudo}" title="Pseudo" />
-                    <p:outputLabel value="Password:" for="password" />
-                    <p:inputText id="password" value="#{utilisateurMBean.details.password}" title="Password" />
-                    <p:outputLabel value="Mail:" for="mail" />
-                    <p:inputText id="mail" value="#{utilisateurMBean.details.mail}" title="Mail" />
-                    <p:outputLabel value="Telephone:" for="telephone" />
-                    <p:inputText id="telephone" value="#{utilisateurMBean.details.telephone}" title="Telephone" />
-                </p:panelGrid>
-                <h:commandButton value="Créer" type="submit" action="#{utilisateurMBean.update()}"/>
-            </h:form>
-        </f:view>
+        <ui:composition template="../template.xhtml">
+            <ui:define name="complementTitreEtH1">
+                Créer ou éditer un utilisateur
+            </ui:define>
+
+            <ui:define name="content">
+                <f:view>
+                    <h:form>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Nom:" for="nom" />
+                            <p:inputText id="nom" value="#{utilisateurMBean.details.nom}" title="Nom" />
+                            <p:outputLabel value="Prenom:" for="prenom" />
+                            <p:inputText id="prenom" value="#{utilisateurMBean.details.prenom}" title="Prenom" />
+                            <p:outputLabel value="Pseudo:" for="pseudo" />
+                            <p:inputText id="pseudo" value="#{utilisateurMBean.details.pseudo}" title="Pseudo" />
+                            <p:outputLabel value="Password:" for="password" />
+                            <p:inputText id="password" value="#{utilisateurMBean.details.password}" title="Password" />
+                            <p:outputLabel value="Mail:" for="mail" />
+                            <p:inputText id="mail" value="#{utilisateurMBean.details.mail}" title="Mail" />
+                            <p:outputLabel value="Telephone:" for="telephone" />
+                            <p:inputText id="telephone" value="#{utilisateurMBean.details.telephone}" title="Telephone" />
+                        </p:panelGrid>
+                        <h:commandButton value="Créer" type="submit" action="#{utilisateurMBean.update()}"/>
+                    </h:form>
+                </f:view>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>

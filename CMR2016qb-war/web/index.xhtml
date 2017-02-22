@@ -1,24 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <head>
-        <title>CRM 2016</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
     <body>
-        <h:form>
-            <h:commandButton value="Voir les entreprises" action="/lists/entreprises?faces-redirect=true"/>
-            <h:commandButton value="Voir les utilisateurs" action="/lists/utilisateurs?faces-redirect=true"/>
-            <h:commandButton value="Voir les étudiants" action="/lists/etudiants?faces-redirect=true"/>
-            <h:commandButton value="Voir les stages" action="/lists/stages?faces-redirect=true"/>
-            <h:commandButton value="Voir les interactions" action="/lists/interactions?faces-redirect=true"/>
-            <h:commandButton value="Voir les contacts" action="/lists/contactsEntreprise?faces-redirect=true"/>
-        </h:form>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="complementTitreEtH1">
+                Accueil
+            </ui:define>
+
+            <ui:define name="content">
+                content
+            </ui:define>
+
+        </ui:composition>
+
     </body>
 </html>

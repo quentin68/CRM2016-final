@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Stage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -18,42 +19,49 @@ and open the template in the editor.
         </f:metadata>  
     </h:head>
     <h:body>
-        <f:view>
-            <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="Type:" for="type" />
-                    <p:selectOneMenu id="type" value="#{stageMBean.details.type}"> 
-                        <f:selectItems value="#{typeStageMBean.typesStage}" var="type"
-                                       itemValue="#{type}" itemLabel="#{type}" />
-                    </p:selectOneMenu>
-                    <p:outputLabel value="Entreprise:" for="entreprise" />
-                    <p:selectOneMenu id="entreprise" value="#{stageMBean.details.entreprise}" 
-                                     converter="#{entrepriseMBean.entreprisesConverter}"> 
-                        <f:selectItems value="#{entrepriseMBean.allEntreprises}"
-                            var="item" itemLabel="#{item.nom}" itemValue="#{item}" />
-                    </p:selectOneMenu>
-                    <p:outputLabel value="Etudiant:" for="etudiant" />
-                    <p:selectOneMenu id="etudiant" value="#{stageMBean.details.etudiant}" 
-                                     converter="#{etudiantMBean.etudiantsConverter}"> 
-                        <f:selectItems value="#{etudiantMBean.allEtudiants}"
-                                       var="item" itemLabel="#{item.nom} #{item.prenom}" itemValue="#{item}" />
-                    </p:selectOneMenu>
-                    <p:outputLabel value="DateDebut:" for="dateDebut" />
-                    <p:inputText id="dateDebut" value="#{stageMBean.details.dateDebut}" title="DateDebut" >
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </p:inputText>
-                    <p:outputLabel value="DateFin:" for="dateFin" />
-                    <p:inputText id="dateFin" value="#{stageMBean.details.dateFin}" title="DateFin" >
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </p:inputText>
-                    <p:outputLabel value="Intitule:" for="intitule" />
-                    <p:inputText id="intitule" value="#{stageMBean.details.intitule}" title="Intitule" />
-                    <p:outputLabel value="Contenu:" for="contenu" />
-                    <p:inputText id="contenu" value="#{stageMBean.details.contenu}" title="Contenu" />
-                </p:panelGrid>
-                <h:commandButton value="Créer" type="submit" action="#{stageMBean.update()}"/>
-            </h:form>
-        </f:view>
+        <ui:composition template="../template.xhtml">
+            <ui:define name="complementTitreEtH1">
+                Créer ou éditer un stage
+            </ui:define>
+
+            <ui:define name="content">
+                <f:view>
+                    <h:form>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Type:" for="type" />
+                            <p:selectOneMenu id="type" value="#{stageMBean.details.type}"> 
+                                <f:selectItems value="#{typeStageMBean.typesStage}" var="type"
+                                               itemValue="#{type}" itemLabel="#{type}" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Entreprise:" for="entreprise" />
+                            <p:selectOneMenu id="entreprise" value="#{stageMBean.details.entreprise}" 
+                                             converter="#{entrepriseMBean.entreprisesConverter}"> 
+                                <f:selectItems value="#{entrepriseMBean.allEntreprises}"
+                                               var="item" itemLabel="#{item.nom}" itemValue="#{item}" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Etudiant:" for="etudiant" />
+                            <p:selectOneMenu id="etudiant" value="#{stageMBean.details.etudiant}" 
+                                             converter="#{etudiantMBean.etudiantsConverter}"> 
+                                <f:selectItems value="#{etudiantMBean.allEtudiants}"
+                                               var="item" itemLabel="#{item.nom} #{item.prenom}" itemValue="#{item}" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="DateDebut:" for="dateDebut" />
+                            <p:inputText id="dateDebut" value="#{stageMBean.details.dateDebut}" title="DateDebut" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </p:inputText>
+                            <p:outputLabel value="DateFin:" for="dateFin" />
+                            <p:inputText id="dateFin" value="#{stageMBean.details.dateFin}" title="DateFin" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </p:inputText>
+                            <p:outputLabel value="Intitule:" for="intitule" />
+                            <p:inputText id="intitule" value="#{stageMBean.details.intitule}" title="Intitule" />
+                            <p:outputLabel value="Contenu:" for="contenu" />
+                            <p:inputText id="contenu" value="#{stageMBean.details.contenu}" title="Contenu" />
+                        </p:panelGrid>
+                        <h:commandButton value="Créer" type="submit" action="#{stageMBean.update()}"/>
+                    </h:form>
+                </f:view>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>

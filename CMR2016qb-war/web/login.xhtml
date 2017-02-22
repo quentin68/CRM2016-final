@@ -11,18 +11,13 @@ and open the template in the editor.
     <head>
         <title>sjcsj</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-           <f:metadata>  
-<<<<<<< HEAD
-  <f:viewParam name="idUser" value="#{authenticationMBean.idUser}"/>  
-=======
-  <f:viewParam name="idUser" value="#{authenticationMBean.idUser}"  
-               />  
->>>>>>> bbc6b60370e06151e7f3df5c84fdca0454009782
-  <f:viewAction action="#{authenticationMBean.loadUser}"/>  
-</f:metadata>  
+        <f:metadata>  
+            <f:viewParam name="idUser" value="#{authenticationMBean.idUser}"/>  
+            <f:viewAction action="#{authenticationMBean.loadUser}"/>  
+        </f:metadata>  
     </head>
     <body>
-         <f:event listener="#{authenticationMBean.checkErrors}" type="preRenderView"/>
+        <f:event listener="#{authenticationMBean.checkErrors}" type="preRenderView"/>
         <f:view>
 
 
@@ -82,20 +77,20 @@ and open the template in the editor.
         </f:view>
 
 
-            <h:form>
-                <h1><h:outputText value="Connexion"/></h1>
-                <h:panelGrid columns="2">
-                    
-                    <h:outputLabel value="Pseudo:" for="pseudo" />
-                    <h:inputText id="pseudo" value="#{authenticationMBean.pseudo}" title="Pseudo" />
-                    <h:outputLabel value="Password:" for="password" />
-                    <h:inputText id="password" value="#{authenticationMBean.password}" title="Password" />
-                    <h:commandButton value="Se connecter" type="submit"
+        <h:form>
+            <h1><h:outputText value="Connexion"/></h1>
+            <h:panelGrid columns="2">
+
+                <h:outputLabel value="Pseudo:" for="pseudo" />
+                <h:inputText id="pseudo" value="#{authenticationMBean.pseudo}" title="Pseudo" />
+                <h:outputLabel value="Password:" for="password" />
+                <h:inputText id="password" value="#{authenticationMBean.password}" title="Password" />
+                <h:commandButton value="Se connecter" type="submit"
                                  action="#{authenticationMBean.connect()}"/>
-                </h:panelGrid>
-                
-            </h:form>
-       
+            </h:panelGrid>
+
+        </h:form>
+
 
     </body>
 </html>
