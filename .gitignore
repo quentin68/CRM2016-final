@@ -2,5 +2,6 @@
 /CMR2016qb-ejb/build/
 /CMR2016qb-war/build/
 /CMR2016qb-war/dist/
+/nbproject/
 /build/
 /dist/
