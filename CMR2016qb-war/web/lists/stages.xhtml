@@ -14,66 +14,80 @@
         <f:view>
             <h:form>
                 <h1><h:outputText value="Liste des stages"/></h1>
-                <p:dataTable value="#{stageMBean.stages}" var="item">
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Id"/>
-                        </f:facet>
-                        <h:link outcome="#{stageMBean.showDetails(item.id)}" value="#{item.id}"/>
+                <p:dataTable value="#{stageMBean.stages}" var="item"   
+                    emptyMessage="Pas de stages correspondants à ces critères"   
+                    widgetVar="customerTable"  
+                    paginator="true" 
+                    rows="10">
+                <p:column headerText="Id"  
+                        sortBy="#{item.id}"  
+                        filterBy="#{item.id}"  
+                        filterMatchMode="contains">  
+                        <h:link outcome="#{stageMBean.showDetails(item.id)}" value="#{item.id}"/>    
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Type"/>
-                        </f:facet>
-                        <h:outputText value="#{item.type}"/>
+                   
+                     <p:column headerText="Type"  
+                        sortBy="#{item.type}"  
+                        filterBy="#{item.type}"  
+                        filterMatchMode="contains">  
+                      <h:outputText value="#{item.type}"/>
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Entreprise"/>
-                        </f:facet>
-                        <h:outputText value="#{item.entreprise.nom}"/>
+                    
+                    <p:column headerText="Entreprise"  
+                        sortBy="#{item.entreprise.nom}"  
+                        filterBy="#{item.entreprise.nom}"  
+                        filterMatchMode="contains">  
+           <h:outputText value="#{item.entreprise.nom}"/>
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Etudiant"/>
-                        </f:facet>
-                        <h:outputText value="#{item.etudiant.nom} #{item.etudiant.prenom}"/>
+                  
+                    <p:column headerText="Etudiant"  
+                        sortBy="#{item.etudiant.nom}"  
+                        filterBy="#{item.etudiant.nom}"  
+                        filterMatchMode="contains">  
+           <h:outputText value="#{item.etudiant.nom}"/>
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="DateDebut"/>
-                        </f:facet>
-                        <h:outputText value="#{item.dateDebut}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:outputText>
+                   
+                    <p:column headerText="DateDebut"  
+                        sortBy="#{item.dateDebut}"  
+                        filterBy="#{item.dateDebut}"  
+                        filterMatchMode="contains">  
+           <h:outputText value="#{item.dateDebut}">
+            <f:convertDateTime pattern="MM/dd/yyyy" />
+            </h:outputText>
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="DateFin"/>
-                        </f:facet>
+                  
+                    <p:column headerText="DateFin"  
+                        sortBy="#{item.dateFin}"  
+                        filterBy="#{item.dateFin}"  
+                        filterMatchMode="contains"> 
                         <h:outputText value="#{item.dateFin}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:outputText>
+            <f:convertDateTime pattern="MM/dd/yyyy" />
+            </h:outputText>
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Intitule"/>
-                        </f:facet>
-                        <h:outputText value="#{item.intitule}"/>
+                  
+                    <p:column headerText="Intitule"  
+                        sortBy="#{item.intitule}"  
+                        filterBy="#{item.intitule}"  
+                        filterMatchMode="contains">  
+           <h:outputText value="#{item.intitule}"/>
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Contenu"/>
-                        </f:facet>
-                        <h:outputText value="#{item.contenu}"/>
+                  
+                    <p:column headerText="Contenu"  
+                        sortBy="#{item.contenu}"  
+                        filterBy="#{item.contenu}"  
+                        filterMatchMode="contains">  
+           <h:outputText value="#{item.contenu}"/>
                     </p:column>
-                    <p:column>
+                  <p:column>
                         <f:facet name="header">
                             <h:outputText value="Supprimer"/>
                         </f:facet>
                         <h:commandButton value="Supprimer" action="#{stageMBean.delete(item)}"/>
-                    </p:column>
+                    
+                        </p:column>
+                    
                 </p:dataTable>
+              
                 <h:commandButton value="Créer un stage" action="#{stageMBean.showCreate}"/>
             </h:form>
         </f:view>

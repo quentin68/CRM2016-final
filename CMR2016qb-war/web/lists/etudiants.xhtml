@@ -14,37 +14,46 @@
         <f:view>
             <h:form>
                 <h1><h:outputText value="Liste des étudiants"/></h1>
-                <p:dataTable value="#{etudiantMBean.etudiants}" var="item">
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Id"/>
-                        </f:facet>
-                        <h:link outcome="#{etudiantMBean.showDetails(item.id)}" value="#{item.id}"/>
+                <p:dataTable value="#{etudiantMBean.etudiants}" var="item"   
+                    emptyMessage="Pas d'étudiants pour ces critères"   
+                    widgetVar="customerTable"  
+                    paginator="true" 
+                    rows="10">
+            <p:column headerText="Id"  
+                        sortBy="#{item.id}"  
+                        filterBy="#{item.id}"  
+                        filterMatchMode="contains">  
+                        <h:link outcome="#{etudiantMBean.showDetails(item.id)}" value="#{item.id}"/>    
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Nom"/>
-                        </f:facet>
-                        <h:outputText value="#{item.nom}"/>
+                    
+                     <p:column headerText="Nom"  
+                        sortBy="#{item.nom}"  
+                        filterBy="#{item.nom}"  
+                        filterMatchMode="contains">  
+                         <h:outputText value="#{item.nom}"/>
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Prenom"/>
-                        </f:facet>
-                        <h:outputText value="#{item.prenom}"/>
+                    
+                    <p:column headerText="Prenom"  
+                        sortBy="#{item.prenom}"  
+                        filterBy="#{item.prenom}"  
+                        filterMatchMode="contains">  
+                          <h:outputText value="#{item.prenom}"/>
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="NumeroEtudiant"/>
-                        </f:facet>
-                        <h:outputText value="#{item.numeroEtudiant}"/>
+                    
+                    <p:column headerText="NumeroEtudiant"  
+                        sortBy="#{item.numeroEtudiant}"  
+                        filterBy="#{item.numeroEtudiant}"  
+                        filterMatchMode="contains">  
+                          <h:outputText value="#{item.numeroEtudiant}"/>
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Mail"/>
-                        </f:facet>
-                        <h:outputText value="#{item.mail}"/>
+                   
+                     <p:column headerText="Mail"  
+                        sortBy="#{item.mail}"  
+                        filterBy="#{item.mail}"  
+                        filterMatchMode="contains">  
+                           <h:outputText value="#{item.mail}"/>
                     </p:column>
+                   
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Supprimer"/>

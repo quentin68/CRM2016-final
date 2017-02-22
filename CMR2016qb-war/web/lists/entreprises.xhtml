@@ -18,51 +18,62 @@
         <f:view>
             <h:form>
                 <h1><h:outputText value="Liste des entreprises"/></h1>
-                <p:dataTable value="#{entrepriseMBean.entreprises}" var="item">
-                    <p:column sortBy="#{item.id}">
-                        <f:facet name="header">
-                            <h:outputText value="Id"/>
-                        </f:facet>
-                        <h:link outcome="#{entrepriseMBean.showDetails(item.id)}" value="#{item.id}"/>
+                <p:dataTable value="#{entrepriseMBean.entreprises}" var="item"   
+                    emptyMessage="Pas d'entreprises trouvées pour ces critères"   
+                    widgetVar="customerTable"  
+                    paginator="true" 
+                    rows="10">
+                <p:column headerText="Id"  
+                        sortBy="#{item.id}"  
+                        filterBy="#{item.id}"  
+                        filterMatchMode="contains">  
+                        <h:link outcome="#{entrepriseMBean.showDetails(item.id)}" value="#{item.id}"/>    
                     </p:column>
-                    <p:column sortBy="#{item.nom}">
-                        <f:facet name="header">
-                            <h:outputText value="Nom"/>
-                        </f:facet>
-                        <h:outputText value="#{item.nom}"/>
+                   
+                    <p:column headerText="Nom"  
+                        sortBy="#{item.nom}"  
+                        filterBy="#{item.nom}"  
+                        filterMatchMode="contains">  
+                         <h:outputText value="#{item.nom}"/>
                     </p:column>
-                    <p:column sortBy="#{item.adresse}">
-                        <f:facet name="header">
-                            <h:outputText value="Adresse"/>
-                        </f:facet>
-                        <h:outputText value="#{item.adresse}"/>
+                   
+                    <p:column headerText="Adresse"  
+                        sortBy="#{item.adresse}"  
+                        filterBy="#{item.adresse}"  
+                        filterMatchMode="contains">  
+                         <h:outputText value="#{item.adresse}"/>
                     </p:column>
-                    <p:column sortBy="#{item.codePostal}">
-                        <f:facet name="header">
-                            <h:outputText value="Code Postal"/>
-                        </f:facet>
-                        <h:outputText value="#{item.codePostal}"/>
+                 
+                    <p:column headerText="CodePostal"  
+                        sortBy="#{item.codePostal}"  
+                        filterBy="#{item.codePostal}"  
+                        filterMatchMode="contains">  
+                         <h:outputText value="#{item.codePostal}"/>
                     </p:column>
-                    <p:column sortBy="#{item.ville}">
-                        <f:facet name="header">
-                            <h:outputText value="Ville"/>
-                        </f:facet>
-                        <h:outputText value="#{item.ville}"/>
+                   
+                    <p:column headerText="Ville"  
+                        sortBy="#{item.ville}"  
+                        filterBy="#{item.ville}"  
+                        filterMatchMode="contains">  
+                         <h:outputText value="#{item.ville}"/>
                     </p:column>
-                    <p:column sortBy="#{item.description}">
-                        <f:facet name="header">
-                            <h:outputText value="Description"/>
-                        </f:facet>
-                        <h:outputText value="#{item.description}"/>
+                    
+                    <p:column headerText="Description"  
+                        sortBy="#{item.description}"  
+                        filterBy="#{item.description}"  
+                        filterMatchMode="contains">  
+                         <h:outputText value="#{item.description}"/>
                     </p:column>
-                    <p:column sortBy="#{item.dateCreation}">
-                        <f:facet name="header">
-                            <h:outputText value="Date"/>
-                        </f:facet>
+                    
+                    <p:column headerText=">Date"  
+                        sortBy="#{item.dateCreation}"  
+                        filterBy="#{item.dateCreation}"  
+                        filterMatchMode="contains">  
                         <h:outputText value="#{item.dateCreation}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                        </h:outputText>
+                         <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                         </h:outputText>
                     </p:column>
+                 
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Interactions"/>

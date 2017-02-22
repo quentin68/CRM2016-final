@@ -6,8 +6,9 @@
 package managedBeans;
 
 import entitie.InteractionEnum;
+import javax.faces.bean.ApplicationScoped;
 import javax.inject.Named;
-import javax.enterprise.context.ApplicationScoped;
+
 
 /**
  *
