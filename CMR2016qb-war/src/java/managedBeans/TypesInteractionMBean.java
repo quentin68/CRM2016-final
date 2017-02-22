@@ -6,7 +6,8 @@
 package managedBeans;
 
 import entitie.InteractionEnum;
-import javax.faces.bean.ApplicationScoped;
+import java.util.Arrays;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
 
@@ -29,6 +30,8 @@ public class TypesInteractionMBean {
      * @return
      */
     public InteractionEnum[] getTypesInteraction() {
+        System.out.println("ok");
+        System.out.println(Arrays.toString(InteractionEnum.values()));
         return InteractionEnum.values();
     }
     

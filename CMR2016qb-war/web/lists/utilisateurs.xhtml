@@ -16,7 +16,7 @@
                 <h1><h:outputText value="Liste des utilisateurs"/></h1>
                 <p:dataTable value="#{utilisateurMBean.utilisateurs}" var="item"   
                     emptyMessage="Pas d'utilisateurs correspondant à ces critères"   
-                    widgetVar="customerTable"  
+                    widgetVar="usersTable"  
                     paginator="true" 
                     rows="10">
                
@@ -48,14 +48,7 @@
                               filterMatchMode="contains">  
                         <h:outputText value="#{item.pseudo}"/>
                     </p:column>
-                    
-                     <p:column headerText="Password"  
-                        sortBy="#{item.password}"  
-                        filterBy="#{item.password}"  
-                        filterMatchMode="contains">  
-                          <h:outputText value="#{item.password}"/>
-                    </p:column>
-                    
+
                      <p:column headerText="Mail"  
                         sortBy="#{item.mail}"  
                         filterBy="#{item.mail}"  

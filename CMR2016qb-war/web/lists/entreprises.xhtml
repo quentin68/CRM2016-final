@@ -20,7 +20,7 @@
                 <h1><h:outputText value="Liste des entreprises"/></h1>
                 <p:dataTable value="#{entrepriseMBean.entreprises}" var="item"   
                     emptyMessage="Pas d'entreprises trouvées pour ces critères"   
-                    widgetVar="customerTable"  
+                    widgetVar="entreprisesTable"  
                     paginator="true" 
                     rows="10">
                 <p:column headerText="Id"  

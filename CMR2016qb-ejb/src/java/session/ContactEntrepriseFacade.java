@@ -34,5 +34,4 @@ public class ContactEntrepriseFacade extends AbstractFacade<ContactEntreprise> {
     public ContactEntrepriseFacade() {
         super(ContactEntreprise.class);
     }
-    
 }

@@ -34,5 +34,4 @@ public class StageFacade extends AbstractFacade<Stage> {
     public StageFacade() {
         super(Stage.class);
     }
-    
 }

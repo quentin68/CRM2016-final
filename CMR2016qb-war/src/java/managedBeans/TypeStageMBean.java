@@ -6,7 +6,7 @@
 package managedBeans;
 
 import entitie.TypeStageEnum;
-import javax.faces.bean.ApplicationScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
 

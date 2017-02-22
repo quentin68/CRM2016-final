@@ -190,17 +190,5 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> {
         u.setPassword(password);
         u.setMail(mail);
         u.setTelephone(telephone);
-        //u.setAdmin(estAdmin);
-
     }
-    
-    /**
-     *
-     */
-    public void creerAdmin() {
-          
-        Utilisateur u = new Utilisateur("Bauer", "Quentin", "quentin68", "123456","qbauer68@gmail.com", "0610936472");
-        create(u);
-    }
-
 }

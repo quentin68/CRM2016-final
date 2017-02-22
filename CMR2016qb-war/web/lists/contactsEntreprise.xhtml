@@ -16,7 +16,7 @@
                 <h1><h:outputText value="Liste des contacts"/></h1>
                 <p:dataTable value="#{contactEntrepriseMBean.contactEntreprises}" var="item"   
                     emptyMessage="Pas de contacts trouvés pour ce critère"   
-                    widgetVar="customerTable"  
+                    widgetVar="contactsEntrepriseTable"  
                     paginator="true" 
                     rows="10">
                
@@ -53,7 +53,7 @@
                         sortBy="#{item.entreprise.nom}"  
                         filterBy="#{item.entreprise.nom}"  
                         filterMatchMode="contains">  
-              <h:outputText value="#{item.entreprise.nom}"/>
+                                <h:outputText value="#{item.entreprise.nom}"/>
                     </p:column>
                     
                     <p:column headerText="Poste"  
@@ -61,12 +61,6 @@
                         filterBy="#{item.poste}"  
                         filterMatchMode="contains">  
                              <h:outputText value="#{item.poste}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Poste"/>
-                        </f:facet>
-                        <h:outputText value="#{item.poste}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">

@@ -55,5 +55,4 @@ public class InteractionFacade extends AbstractFacade<Interaction> {
             return null;
         }
     }
-    
 }
