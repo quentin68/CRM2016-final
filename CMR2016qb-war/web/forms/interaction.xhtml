@@ -31,7 +31,7 @@ and open the template in the editor.
                         <p:panelGrid columns="2">
                             <p:outputLabel value="DateInteraction:" for="dateInteraction" />
                             <p:inputText id="dateInteraction" value="#{interactionMBean.details.dateInteraction}" title="DateInteraction" >
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </p:inputText>
                             <p:outputLabel value="Type:" for="type" />
                             <p:selectOneMenu id="type" value="#{interactionMBean.details.type}"> 
@@ -60,7 +60,7 @@ and open the template in the editor.
                             <p:outputLabel value="Contenu:" for="contenu" />
                             <p:inputText id="contenu" value="#{interactionMBean.details.contenu}" title="Contenu" />
                         </p:panelGrid>
-                        <h:commandButton value="Créer" type="submit" action="#{interactionMBean.update()}" rendered="#{interactionMBean.id == 0 or (interactionMBean.details.utilisateur.id == authenticationMBean.utilisateur.id)}"/>
+                        <h:commandButton class="button" value="Créer" type="submit" action="#{interactionMBean.update()}" rendered="#{interactionMBean.id == 0 or (interactionMBean.details.utilisateur.id == authenticationMBean.utilisateur.id)}"/>
                     </h:form>
                 </f:view>
             </ui:define>

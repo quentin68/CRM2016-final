@@ -37,7 +37,7 @@ and open the template in the editor.
                             <p:outputLabel value="Mail:" for="mail" />
                             <p:inputText id="mail" value="#{etudiantMBean.details.mail}" title="Mail" />
                         </p:panelGrid>
-                        <h:commandButton value="Créer" type="submit" action="#{etudiantMBean.update()}"/>
+                        <h:commandButton class="button" value="Créer" type="submit" action="#{etudiantMBean.update()}"/>
                     </h:form>
                 </f:view>
             </ui:define>

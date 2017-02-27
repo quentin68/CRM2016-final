@@ -57,7 +57,7 @@ public class AuthenticationMBean implements Serializable {
         utilisateur = uf.getByLogin(pseudo, password);
 
         if(utilisateur != null) {
-            return "/index";
+            return "/lists/entreprises?faces-redirect=true";
         }
         else {
             return "/error";
@@ -78,6 +78,6 @@ public class AuthenticationMBean implements Serializable {
         utilisateur = null;
         pseudo = null;
         password = null;
-        return "/index";
+        return "/lists/entreprises?faces-redirect=true";
     }
 }

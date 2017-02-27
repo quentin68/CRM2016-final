@@ -155,12 +155,17 @@ public class StageMBean implements Serializable {
     private final Converter stagesConverter = new Converter() {
         @Override
         public Object getAsObject(FacesContext context, UIComponent component, String value) {
-            System.out.println(value);
+            if(value == null || value.equals("") || value.equals("Aucun")) {
+                return null;
+            }
             Stage e = stageFacade.find(Integer.parseInt(value));
             return e;
        }
         @Override
         public String getAsString(FacesContext context, UIComponent component, Object value) {
+            if (value == null) {
+                return null;
+            }
             Stage e = (Stage) value;
             return String.valueOf(e.getId()); 
         }

@@ -172,6 +172,6 @@ public class InteractionMBean implements Serializable {
      *
      */
     public void loadInteraction() {  
-        this.interaction = interactionFacade.find(id);  
+        this.interaction = interactionFacade.find(id);
     } 
 }

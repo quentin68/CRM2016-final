@@ -42,7 +42,7 @@ and open the template in the editor.
                             <p:outputLabel value="Telephone:" for="telephone" />
                             <p:inputText id="telephone" value="#{utilisateurMBean.details.telephone}" title="Telephone" />
                         </p:panelGrid>
-                        <h:commandButton value="Créer" type="submit" action="#{utilisateurMBean.update()}"/>
+                        <h:commandButton class="button" value="Créer" type="submit" action="#{utilisateurMBean.update()}"/>
                     </h:form>
                 </f:view>
             </ui:define>

@@ -48,18 +48,18 @@ and open the template in the editor.
                             </p:selectOneMenu>
                             <p:outputLabel value="DateDebut:" for="dateDebut" />
                             <p:inputText id="dateDebut" value="#{stageMBean.details.dateDebut}" title="DateDebut" >
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </p:inputText>
                             <p:outputLabel value="DateFin:" for="dateFin" />
                             <p:inputText id="dateFin" value="#{stageMBean.details.dateFin}" title="DateFin" >
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </p:inputText>
                             <p:outputLabel value="Intitule:" for="intitule" />
                             <p:inputText id="intitule" value="#{stageMBean.details.intitule}" title="Intitule" />
                             <p:outputLabel value="Contenu:" for="contenu" />
                             <p:inputText id="contenu" value="#{stageMBean.details.contenu}" title="Contenu" />
                         </p:panelGrid>
-                        <h:commandButton value="Créer" type="submit" action="#{stageMBean.update()}"/>
+                        <h:commandButton class="button" value="Créer" type="submit" action="#{stageMBean.update()}"/>
                     </h:form>
                 </f:view>
             </ui:define>

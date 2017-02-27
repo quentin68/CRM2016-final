@@ -40,7 +40,7 @@ and open the template in the editor.
                             <p:outputLabel value="Description:" for="description" />
                             <p:inputText id="description" value="#{entrepriseMBean.details.description}" title="Description" />
                         </p:panelGrid>
-                        <h:commandButton value="Créer" type="submit" action="#{entrepriseMBean.update()}"/>
+                        <h:commandButton class="button" value="Créer" type="submit" action="#{entrepriseMBean.update()}"/>
                     </h:form>
                 </f:view>
             </ui:define>

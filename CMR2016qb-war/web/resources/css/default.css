@@ -12,7 +12,8 @@ h1 {
     font-weight: bold;
     margin: 0px;
     padding: 0px;
-    color: #D20005;
+    color: #FFF;
+    text-align: center;
 }
 
 a:link, a:visited {

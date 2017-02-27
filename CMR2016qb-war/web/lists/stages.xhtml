@@ -61,7 +61,7 @@
                                       filterBy="#{item.dateDebut}"  
                                       filterMatchMode="contains">  
                                 <h:outputText value="#{item.dateDebut}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
                                 </h:outputText>
                             </p:column>
 
@@ -70,7 +70,7 @@
                                       filterBy="#{item.dateFin}"  
                                       filterMatchMode="contains"> 
                                 <h:outputText value="#{item.dateFin}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
                                 </h:outputText>
                             </p:column>
 
@@ -97,7 +97,7 @@
 
                         </p:dataTable>
 
-                        <h:commandButton value="Créer un stage" action="#{stageMBean.showCreate}"/>
+                        <h:commandButton class="button" value="Créer un stage" action="#{stageMBean.showCreate}"/>
                     </h:form>
                 </f:view>
             </ui:define>

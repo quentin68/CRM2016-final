@@ -76,7 +76,7 @@
                                       filterBy="#{item.dateCreation}"  
                                       filterMatchMode="contains">  
                                 <h:outputText value="#{item.dateCreation}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
                                 </h:outputText>
                             </p:column>
 
@@ -94,7 +94,7 @@
                                 <h:commandButton value="Supprimer" action="#{entrepriseMBean.delete(item)}"/>
                             </p:column>
                         </p:dataTable>
-                        <h:commandButton value="Créer une entreprise" action="#{entrepriseMBean.showCreate}"/>
+                        <h:commandButton class="button" value="Créer une entreprise" action="#{entrepriseMBean.showCreate}"/>
                     </h:form>
                 </f:view>
             </ui:define>

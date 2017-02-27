@@ -2,30 +2,42 @@
     position: relative;
     background-color: #036fab;
     color: white;
-    padding: 5px;
+    padding: 20px 5px;
     margin: 0px 0px 10px 0px;
 }
 
 #bottom {
     position: relative;
-    background-color: #c2dfef;
-    padding: 5px;
+    background-color: #036fab;
+    padding: 20px 5px;
     margin: 10px 0px 0px 0px;
 	clear: both;
 	text-align: center;
+    color: #FFF;
 }
 
 #left {
     float: left;
-    background-color: #ece3a5;
-    padding: 5px;
+    background-color: #036fab;
+    padding: 20px 5px;
     width: 240px;
     margin-bottom: 10px;
+    color: #FFF;
+}
+
+#left li {
+    padding: 3px 0;
+}
+
+#left li a {
+  color: #FFF;
+  font-weight : bold;
+  text-decoration: none;
 }
 
 #right {
     float: right;
-    background-color: #ece3a5;
+    background-color: #FFF;
     padding: 5px;
     width: 150px;
 }
@@ -38,8 +50,9 @@
 
 .left_content {
     background-color: #dddddd;
-    padding: 5px;
+    padding: 10px;
     margin-left: 260px;
+    min-width: 240px;
 }
 
 .right_content {
@@ -60,4 +73,15 @@
   text-decoration : underline;
 }
 
+.loginform {
+    text-align: center;
+}
 
+.loginform table {
+    margin: auto;
+}
+
+.button {
+    margin: 10px 0;
+    padding: 10px 20px;
+}

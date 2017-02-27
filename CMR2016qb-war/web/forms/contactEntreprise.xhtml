@@ -44,7 +44,7 @@ and open the template in the editor.
                             <p:outputLabel value="Poste:" for="poste" />
                             <p:inputText id="poste" value="#{contactEntrepriseMBean.details.poste}" title="Poste" />
                         </p:panelGrid>
-                        <h:commandButton value="Créer" type="submit" action="#{contactEntrepriseMBean.update()}"/>
+                        <h:commandButton class="button" value="Créer" type="submit" action="#{contactEntrepriseMBean.update()}"/>
                     </h:form>
                 </f:view>
             </ui:define>

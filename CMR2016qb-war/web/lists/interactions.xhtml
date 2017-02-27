@@ -42,7 +42,7 @@
                                       filterBy="#{item.dateInteraction}"  
                                       filterMatchMode="contains">  
                                 <h:outputText value="#{item.dateInteraction}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
                                 </h:outputText>
                             </p:column>
 
@@ -118,7 +118,7 @@
                                 <h:commandButton value="Supprimer" action="#{interactionMBean.delete(item)}" rendered="#{item.utilisateur.id == authenticationMBean.utilisateur.id}"/>
                             </p:column>
                         </p:dataTable>
-                        <h:commandButton value="Créer une intéraction" action="#{interactionMBean.showCreate()}"/>
+                        <h:commandButton class="button" value="Créer une intéraction" action="#{interactionMBean.showCreate()}"/>
                     </h:form>
                 </f:view>
             </ui:define>

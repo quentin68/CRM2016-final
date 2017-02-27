@@ -14,14 +14,14 @@
 
             <ui:define name="content">
                 <f:view>
-                    <h:form>
+                    <h:form class="loginform">
                         <p:panelGrid columns="2">
                             <p:outputLabel value="Pseudo:" for="pseudo" />
                             <p:inputText id="pseudo" value="#{authenticationMBean.pseudo}" title="Pseudo" />
                             <p:outputLabel value="Password:" for="password" />
                             <p:password id="password" value="#{authenticationMBean.password}" title="Password" />
                         </p:panelGrid>
-                        <h:commandButton value="Se connecter" type="submit" action="#{authenticationMBean.connexion}"/>
+                        <h:commandButton value="Se connecter" type="submit" class="button" action="#{authenticationMBean.connexion}"/>
                     </h:form>
                 </f:view>
             </ui:define>
