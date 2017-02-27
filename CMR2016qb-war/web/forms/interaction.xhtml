@@ -14,6 +14,7 @@ and open the template in the editor.
         <title>Stage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <f:metadata>  
+            <f:event type="preRenderView" listener="#{authenticationMBean.isConnected()}" />
             <f:viewParam name="id" value="#{interactionMBean.id}"/>  
             <f:viewAction action="#{interactionMBean.loadInteraction()}"/>  
         </f:metadata>  
@@ -52,13 +53,14 @@ and open the template in the editor.
                             <p:outputLabel value="Stage:" for="stage" />
                             <p:selectOneMenu id="stage" value="#{interactionMBean.details.stage}"  
                                              converter="#{stageMBean.stagesConverter}"> 
+                                <f:selectItem itemLabel="Aucun" itemValue="#{null}" noSelectionOption="true" />
                                 <f:selectItems value="#{stageMBean.allStages}"
                                                var="item" itemLabel="#{item.intitule}" itemValue="#{item}" />
                             </p:selectOneMenu>
                             <p:outputLabel value="Contenu:" for="contenu" />
                             <p:inputText id="contenu" value="#{interactionMBean.details.contenu}" title="Contenu" />
                         </p:panelGrid>
-                        <h:commandButton value="Créer" type="submit" action="#{interactionMBean.update()}"/>
+                        <h:commandButton value="Créer" type="submit" action="#{interactionMBean.update()}" rendered="#{interactionMBean.id == 0 or (interactionMBean.details.utilisateur.id == authenticationMBean.utilisateur.id)}"/>
                     </h:form>
                 </f:view>
             </ui:define>

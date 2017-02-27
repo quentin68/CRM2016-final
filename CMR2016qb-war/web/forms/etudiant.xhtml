@@ -13,6 +13,7 @@ and open the template in the editor.
     <h:head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <f:metadata>  
+            <f:event type="preRenderView" listener="#{authenticationMBean.isConnected()}" />
             <f:viewParam name="id" value="#{etudiantMBean.id}"/>  
             <f:viewAction action="#{etudiantMBean.loadEtudiant()}"/>  
         </f:metadata>  

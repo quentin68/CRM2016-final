@@ -10,9 +10,11 @@ import entitie.Stage;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import session.InteractionFacade;
 
 /**
@@ -29,7 +31,9 @@ public class InteractionMBean implements Serializable {
     private Interaction interaction;
     private List<Interaction> liste = new ArrayList();
     private int idEntreprise;
-
+    @Inject
+    private AuthenticationMBean authenticationMBean;
+    
     /**
      *
      */
@@ -130,19 +134,30 @@ public class InteractionMBean implements Serializable {
      *
      * @return
      */
-    public String update() {  
+    public String update() {
+        if(interaction.getUtilisateur() == null) {
+            interaction.setUtilisateur(authenticationMBean.getUtilisateur());
+        }
+        else {
+            if(interaction.getUtilisateur().getId() != authenticationMBean.getUtilisateur().getId()) {
+                return "/lists/interactions?faces-redirect=true";
+            }
+        }
+        
         interactionFacade.edit(interaction);
         return "/lists/interactions?faces-redirect=true";  
-    }  
+    }
 
     /**
      *
      * @param i
      * @return
      */
-    public String delete(Interaction i) {  
-        interactionFacade.remove(i);
-        return "/lists/interactions?faces-redirect=true";  
+    public String delete(Interaction i) {
+        if(i.getUtilisateur().getId() == authenticationMBean.getUtilisateur().getId()) {
+            interactionFacade.remove(i);
+        }
+        return "/lists/interactions?faces-redirect=true";
     }      
     
     /**

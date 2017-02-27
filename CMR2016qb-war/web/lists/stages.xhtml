@@ -10,6 +10,9 @@
              listener="#{stageMBean.refreshListeFromDatabase()}"/>
     <h:head>
         <title>CRM 2016</title>
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{authenticationMBean.isConnected()}" />
+        </f:metadata>
     </h:head>
     <h:body>
         <ui:composition template="../template.xhtml">
@@ -50,7 +53,7 @@
                                       sortBy="#{item.etudiant.nom}"  
                                       filterBy="#{item.etudiant.nom}"  
                                       filterMatchMode="contains">  
-                                <h:outputText value="#{item.etudiant.nom}"/>
+                                <h:outputText value="#{item.etudiant.nom} #{item.etudiant.prenom}"/>
                             </p:column>
 
                             <p:column headerText="DateDebut"  

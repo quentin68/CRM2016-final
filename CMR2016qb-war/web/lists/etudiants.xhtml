@@ -10,6 +10,9 @@
              listener="#{etudiantMBean.refreshListeFromDatabase()}"/>
     <h:head>
         <title>CRM 2016</title>
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{authenticationMBean.isConnected()}" />
+        </f:metadata>
     </h:head>
     <h:body>
         <ui:composition template="../template.xhtml">

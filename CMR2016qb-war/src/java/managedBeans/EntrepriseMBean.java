@@ -89,7 +89,7 @@ public class EntrepriseMBean implements Serializable {
      * @return
      */
     public String showCreate() {  
-        return "/forms/entreprise?faces-redirect";
+        return "/forms/entreprise?faces-redirect=true";
     }  
 
     /**

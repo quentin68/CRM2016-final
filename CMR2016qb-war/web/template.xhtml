@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -12,11 +13,10 @@
     </h:head>
 
     <h:body>
-
         <div id="top" class="top">
-             <h1><ui:insert name="complementTitreEtH1"/>#{numEx}</h1>
+            <h1><ui:insert name="complementTitreEtH1"/>#{numEx}</h1>
         </div>
-        
+
         <div>
             <div id="left">
                 <ul>
@@ -27,6 +27,9 @@
                     <li><h:link outcome="/lists/contactsEntreprise.xhtml" value="Voir les contacts entreprise"/></li> 
                     <li><h:link outcome="/lists/stages.xhtml" value="Voir les stages"/></li> 
                     <li><h:link outcome="/lists/interactions.xhtml" value="Voir les intéractions"/></li>  
+                    <c:if test="#{authenticationMBean.log}">
+                        <li><h:form><h:commandButton value="Deconnexion" action="#{authenticationMBean.deconnexion()}" /></h:form></li>
+                    </c:if>
                 </ul>
             </div>
 
@@ -34,7 +37,7 @@
                 <ui:insert name="content">Content</ui:insert>
             </div>
         </div>
-        
+
         <div id="bottom">
             <ui:insert name="bottom">CRM 2016-2017 | M2 MIAGE NTDP UNICE | BAUER Quentin - BENTOUMI Soukaina - RABADAN Andy</ui:insert>
         </div>
