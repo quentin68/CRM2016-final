@@ -30,8 +30,6 @@ public class TypesInteractionMBean {
      * @return
      */
     public InteractionEnum[] getTypesInteraction() {
-        System.out.println("ok");
-        System.out.println(Arrays.toString(InteractionEnum.values()));
         return InteractionEnum.values();
     }
     
